@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-export default function HereSection() {
+export default function HeroSection() {
   return (
     <section className="bg-black text-white min-h-screen flex items-center justify-center">
       <div className="max-w-6xl w-full flex flex-col md:grid md:grid-cols-2 md:mx-0 mx-4">
@@ -60,7 +60,7 @@ export default function HereSection() {
         {/* Right Side: Image */}
         <div className="flex justify-center items-center">
           <Image
-            src="/images/damith.jpg"
+            src="/images/damith.webp"
             alt="Damith Mendis"
             width={828}
             height={828}
