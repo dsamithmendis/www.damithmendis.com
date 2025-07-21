@@ -4,7 +4,11 @@ import Image from "next/image";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { FlipWords } from "@/components/ui/flip-words";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
-import { HeroMainWords, HeroFlipWords, HeroLinks } from "@/components/lib/hero-section";
+import {
+  HeroMainWords,
+  HeroFlipWords,
+  HeroLinks,
+} from "@/components/lib/hero-section";
 
 export default function HeroSection() {
   return (
@@ -38,7 +42,17 @@ export default function HeroSection() {
                 title={link.label}
                 className="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-white/20 transition"
               >
-                <i className={`${link.iconClass} text-2xl text-[#D3E97A]`} />
+                {link.imageSrc ? (
+                  <Image
+                    src={link.imageSrc}
+                    alt={link.label}
+                    width={24}
+                    height={24}
+                    className="w-5 h-5"
+                  />
+                ) : (
+                  <i className={`${link.iconClass} text-2xl text-[#D3E97A]`} />
+                )}
               </a>
             ))}
           </div>
