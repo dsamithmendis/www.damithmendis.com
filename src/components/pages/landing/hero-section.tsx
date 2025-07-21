@@ -16,7 +16,7 @@ export default function HeroSection() {
       <div className="max-w-6xl w-full flex flex-col md:grid md:grid-cols-2 md:mx-0 mx-4">
         {/* Left Side: Text */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold leading-none uppercase">
+          <h1 className="text-4xl md:text-5xl font-extrabold uppercase">
             hi, i am
             <TypewriterEffectSmooth mainwords={HeroMainWords} />
           </h1>
@@ -26,7 +26,7 @@ export default function HeroSection() {
           </div>
 
           {/* Buttons */}
-          <div className="mt-4 flex justify-center md:justify-start items-center gap-4 flex-wrap">
+          <div className="mt-4 flex justify-start gap-4 flex-wrap">
             <button
               type="button"
               className="bg-[#D3E97A] text-black px-5 py-2 rounded-full font-semibold hover:bg-lime-300 transition"
