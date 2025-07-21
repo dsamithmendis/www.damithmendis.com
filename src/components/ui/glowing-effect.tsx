@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useCallback, useEffect, useRef } from "react";
-import { ge } from "@/components/utils/utils";
+import { cn } from "@/components/utils/utils";
 import { animate } from "motion/react";
 
 interface GlowingEffectProps {
@@ -121,7 +121,7 @@ const GlowingEffect = memo(
     return (
       <>
         <div
-          className={ge(
+          className={cn(
             "pointer-events-none absolute -inset-px hidden rounded-[inherit] border opacity-0 transition-opacity",
             glow && "opacity-100",
             variant === "white" && "border-white",
@@ -159,7 +159,7 @@ const GlowingEffect = memo(
                     )`,
             } as React.CSSProperties
           }
-          className={ge(
+          className={cn(
             "pointer-events-none absolute inset-0 opacity-100 transition-opacity",
             glow && "opacity-100",
             blur > 0 && "blur-[var(--blur)]",
@@ -170,7 +170,7 @@ const GlowingEffect = memo(
           )}
         >
           <div
-            className={ge(
+            className={cn(
               "glow",
               // Make sure glow respects rounded corners explicitly
               "rounded-2xl",
