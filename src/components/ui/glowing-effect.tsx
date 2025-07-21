@@ -1,8 +1,8 @@
 "use client";
 
 import { memo, useCallback, useEffect, useRef } from "react";
-import { animate } from "motion";
 import { ge } from "@/components/utils/utils";
+import { animate } from "motion/react";
 
 interface GlowingEffectProps {
   blur?: number;
@@ -16,6 +16,7 @@ interface GlowingEffectProps {
   movementDuration?: number;
   borderWidth?: number;
 }
+
 const GlowingEffect = memo(
   ({
     blur = 0,
@@ -27,7 +28,7 @@ const GlowingEffect = memo(
     className,
     movementDuration = 2,
     borderWidth = 1,
-    disabled = false,  // Make sure disabled is false to see effect
+    disabled = true,
   }: GlowingEffectProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const lastPosition = useRef({ x: 0, y: 0 });
@@ -77,7 +78,7 @@ const GlowingEffect = memo(
 
           const currentAngle =
             parseFloat(element.style.getPropertyValue("--start")) || 0;
-          let targetAngle =
+          const targetAngle =
             (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) /
               Math.PI +
             90;
@@ -119,16 +120,14 @@ const GlowingEffect = memo(
 
     return (
       <>
-        {/* Outer static border - optional */}
         <div
           className={ge(
-            "pointer-events-none absolute -inset-px hidden rounded-2xl border border-gray-600 opacity-0 transition-opacity",
+            "pointer-events-none absolute -inset-px hidden rounded-[inherit] border opacity-0 transition-opacity",
             glow && "opacity-100",
             variant === "white" && "border-white",
             disabled && "!block"
           )}
         />
-        {/* Animated glowing border */}
         <div
           ref={containerRef}
           style={
@@ -157,23 +156,27 @@ const GlowingEffect = memo(
                        #5a922c calc(50% / var(--repeating-conic-gradient-times)), 
                        #4c7894 calc(75% / var(--repeating-conic-gradient-times)),
                        #dd7bbb calc(100% / var(--repeating-conic-gradient-times))
-                     )`,
+                    )`,
             } as React.CSSProperties
           }
           className={ge(
-            "pointer-events-none absolute inset-0 rounded-2xl opacity-100 transition-opacity",
+            "pointer-events-none absolute inset-0 opacity-100 transition-opacity",
             glow && "opacity-100",
             blur > 0 && "blur-[var(--blur)]",
             className,
-            disabled && "!hidden"
+            disabled && "!hidden",
+            // Explicitly add rounded corners here for glow container
+            "rounded-2xl"
           )}
         >
           <div
             className={ge(
-              "glow rounded-2xl",
+              "glow",
+              // Make sure glow respects rounded corners explicitly
+              "rounded-2xl",
               'after:content-[""] after:rounded-2xl after:absolute after:inset-[calc(-1*var(--glowingeffect-border-width))]',
               "after:[border:var(--glowingeffect-border-width)_solid_transparent]",
-              "after:[background:var(--gradient)] after:[background-attachment:scroll]",
+              "after:[background:var(--gradient)] after:[background-attachment:fixed]",
               "after:opacity-[var(--active)] after:transition-opacity after:duration-300",
               "after:[mask-clip:padding-box,border-box]",
               "after:[mask-composite:intersect]",
