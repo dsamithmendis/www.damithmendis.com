@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { BackgroundGradient } from "@/components/ui/background-gradient";
 
 export default function HeroSection() {
   return (
@@ -57,15 +58,17 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right Side: Image */}
-        <div className="flex justify-center items-center">
-          <Image
-            src="/images/damith.webp"
-            alt="Damith Mendis"
-            width={828}
-            height={828}
-            className="rounded-2xl w-[520px] h-auto object-cover"
-          />
+        {/* Right Side: Image with Background Gradient */}
+        <div className="flex justify-center items-center py-20 md:mt-0 md:py-0">
+          <BackgroundGradient>
+            <Image
+              src="/images/damith.webp"
+              alt="Damith Mendis"
+              width={520}
+              height={520}
+              className="rounded-[22px] object-cover block"
+            />
+          </BackgroundGradient>
         </div>
       </div>
     </section>
