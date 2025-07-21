@@ -27,12 +27,12 @@ export default function HeroSection() {
 
           {/* Buttons */}
           <div className="mt-4 flex justify-start gap-4 flex-wrap">
-            <button
-              type="button"
+            <a
+              href="/contact"
               className="bg-[#D3E97A] text-black px-5 py-2 rounded-full font-semibold hover:bg-lime-300 transition"
             >
               CONTACT ME
-            </button>
+            </a>
 
             {HeroLinks.map((link, i) => (
               <a
