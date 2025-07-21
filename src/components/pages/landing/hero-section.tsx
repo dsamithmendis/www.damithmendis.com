@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
+import { FlipWords } from "@/components/ui/flip-words";
 
 export default function HeroSection() {
+  const words = ["Filmmaker", "Lecturer"];
+
   return (
     <section className="bg-black text-white min-h-screen flex items-center justify-center">
       <div className="max-w-6xl w-full flex flex-col md:grid md:grid-cols-2 md:mx-0 mx-4">
@@ -13,9 +16,10 @@ export default function HeroSection() {
             hi, i am <br />
             <span className="text-white">damith mendis.</span>
           </h1>
-          <p className="mt-4 text-gray-400 max-w-md">
-            Senior 3D Generalist | Filmmaker | Lecturer
-          </p>
+          <div className="mt-4 text-gray-400 max-w-md">
+            <span>Senior 3D Generalist | </span>
+            <FlipWords words={words} />
+          </div>
 
           {/* Buttons */}
           <div className="mt-4 flex justify-center md:justify-start items-center gap-4 flex-wrap">
@@ -60,7 +64,7 @@ export default function HeroSection() {
 
         {/* Right Side: Image with Background Gradient */}
         <div className="flex justify-center items-center py-20 md:mt-0 md:py-0">
-          <BackgroundGradient>
+          <BackgroundGradient className="leading-none rounded-[22px] bg-white dark:bg-zinc-900">
             <Image
               src="/images/damith.webp"
               alt="Damith Mendis"
