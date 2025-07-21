@@ -165,14 +165,12 @@ const GlowingEffect = memo(
             blur > 0 && "blur-[var(--blur)]",
             className,
             disabled && "!hidden",
-            // Explicitly add rounded corners here for glow container
             "rounded-2xl"
           )}
         >
           <div
             className={cn(
               "glow",
-              // Make sure glow respects rounded corners explicitly
               "rounded-2xl",
               'after:content-[""] after:rounded-2xl after:absolute after:inset-[calc(-1*var(--glowingeffect-border-width))]',
               "after:[border:var(--glowingeffect-border-width)_solid_transparent]",

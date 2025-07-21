@@ -10,8 +10,8 @@ export const HeroLinks = [
   },
   {
     href: "https://www.artstation.com/damiya00",
-    label: "ArtStation",
-    iconClass: "ri-artstation-fill",
+    label: "Art Station",
+    imageSrc: "/icons/artstation-brands-solid.svg",
   },
   {
     href: "https://www.behance.net/damithmendis",
