@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { projects } from "@/components/lib/project-section";
+import { projects, slideData } from "@/components/lib/project-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { Carousel } from "@/components/ui/carousel";
 
 export default function ProjectSection() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -193,6 +194,7 @@ export default function ProjectSection() {
           </div>
         )}
       </div>
+      <Carousel slides={slideData} />
     </section>
   );
 }

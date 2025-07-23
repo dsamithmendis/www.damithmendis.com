@@ -14,7 +14,7 @@ export const HeroLinks = [
     imageSrc: "/icons/artstation-brands-solid.svg",
   },
   {
-    href: "https://www.behance.net/damithmendis",
+    href: "https://www.behance.net/damiya00",
     label: "Behance",
     iconClass: "ri-behance-fill",
   },
