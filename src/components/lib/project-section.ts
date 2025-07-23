@@ -80,3 +80,41 @@ export const projects: ProjectData[] = [
     artstationLink: "https://www.artstation.com/artwork/XBbJJL",
   },
 ];
+
+export const slideData = [
+  {
+    title: "Mystic Mountains",
+    button: "Explore Component",
+    src: "/images/cars/image-1.webp",
+  },
+  {
+    title: "Urban Dreams",
+    button: "Explore Component",
+    src: "/images/cars/image-2.webp",
+  },
+  {
+    title: "Neon Nights",
+    button: "Explore Component",
+    src: "/images/cars/image-3.webp",
+  },
+  {
+    title: "Desert Whispers",
+    button: "Explore Component",
+    src: "/images/cars/image-4.webp",
+  },
+  {
+    title: "Desert Whispers",
+    button: "Explore Component",
+    src: "/images/cars/image-5.webp",
+  },
+  {
+    title: "Desert Whispers",
+    button: "Explore Component",
+    src: "/images/cars/image-6.webp",
+  },
+  {
+    title: "Desert Whispers",
+    button: "Explore Component",
+    src: "/images/cars/image-7.webp",
+  },
+];
