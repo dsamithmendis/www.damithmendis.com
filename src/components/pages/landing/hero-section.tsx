@@ -12,7 +12,20 @@ import {
 
 export default function HeroSection() {
   return (
-    <section className="bg-black text-white min-h-screen flex items-center justify-center">
+    <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+      {/* Background Video */}
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
+        src="/videos/background-video.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+
+      {/* Darker Overlay */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+
       <div className="max-w-6xl w-full flex flex-col md:grid md:grid-cols-2 md:mx-0 mx-4">
         {/* Left Side: Text */}
         <div className="flex flex-col justify-center">

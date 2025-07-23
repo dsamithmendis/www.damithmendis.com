@@ -12,11 +12,8 @@ export default function Home() {
     <>
       <Header />
       <HeroSection />
-      <hr className="h-px bg-[#484848] border-0"></hr>
       <ProjectSection />
-      <hr className="h-px bg-[#484848] border-0"></hr>
       <AboutSection />
-      <hr className="h-px bg-[#484848] border-0"></hr>
       <ContactSection/>
       <Footer/>
     </>
