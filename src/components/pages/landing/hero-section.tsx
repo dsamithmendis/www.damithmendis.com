@@ -11,13 +11,12 @@ import {
   HeroLinks,
 } from "@/components/lib/hero-section";
 
-// ✅ Use environment variable for GitHub Pages compatibility
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
-      {/* Background Video */}
+
       <video
         className="absolute top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
         src={`${basePath}/videos/background-video.mp4`}
@@ -27,24 +26,23 @@ export default function HeroSection() {
         playsInline
       />
 
-      {/* Darker Overlay */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
       <div className="max-w-6xl w-full flex flex-col md:grid md:grid-cols-2 md:mx-0 mx-4">
-        {/* Left Side: Text */}
+
         <div className="flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl font-extrabold uppercase">
             hi, i am
             <TypewriterEffectSmooth mainwords={HeroMainWords} />
           </h1>
+
           <div className="mt-4 text-gray-400 max-w-md">
             <span>Senior 3D Generalist | </span>
             <FlipWords words={HeroFlipWords} />
           </div>
 
-          {/* Buttons */}
-          <div className="mt-4 flex justify-start gap-4 flex-wrap">
-            {/* Internal link using Next.js Link */}
+          <div className="mt-4 flex flex-wrap gap-4">
+
             <Link
               href="/#contact"
               className="bg-[#D3E97A] text-black px-5 py-2 rounded-full font-semibold hover:bg-lime-300 transition"
@@ -52,7 +50,6 @@ export default function HeroSection() {
               CONTACT ME
             </Link>
 
-            {/* Social Links */}
             {HeroLinks.map((link, i) =>
               link.href.startsWith("/") ? (
                 <Link
@@ -105,7 +102,6 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right Side: Image */}
         <div className="flex justify-center items-center py-20 md:mt-0 md:py-0">
           <BackgroundGradient className="leading-none rounded-[22px] bg-white dark:bg-zinc-900">
             <Image

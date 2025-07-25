@@ -1,16 +1,16 @@
 import type { NextConfig } from "next";
 
-const repo = "www.damithmendis.com"; // ✅ Your GitHub repo name
+const repo = "www.damithmendis.com";
 
 const nextConfig: NextConfig = {
   output: "export",
   images: {
-    unoptimized: true, // ✅ Required for static export with remote images
+    unoptimized: true,
   },
   basePath: `/${repo}`,
   assetPrefix: `/${repo}`,
   env: {
-    NEXT_PUBLIC_BASE_PATH: `/${repo}`, // ✅ Add this line
+    NEXT_PUBLIC_BASE_PATH: `/${repo}`,
   },
 };
 
