@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -32,6 +32,15 @@ jobs:
 
       - name: Build static site
         run: npm run build
+
+      - name: Confirm 'out' directory exists
+        run: |
+          if [ -d "out" ]; then
+            echo "✅ Out directory exists."
+          else
+            echo "❌ Out directory NOT found."
+            exit 1
+          fi
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
