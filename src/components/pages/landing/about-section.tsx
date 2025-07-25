@@ -1,34 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const images = [
-  "/images/slider/image-1.webp",
-  "/images/slider/image-2.webp",
-  "/images/slider/image-3.webp",
-  "/images/slider/image-4.webp",
-  "/images/slider/image-5.webp",
-  "/images/slider/image-6.webp",
-  "/images/slider/image-7.webp",
-  "/images/slider/image-8.webp",
-];
+import { aboutImages } from "@/components/lib/about-section";
 
 export default function AboutSection() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
+      setCurrent((prev) => (prev + 1) % aboutImages.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Images */}
       <div className="absolute inset-0 z-0">
-        {images.map((src, index) => (
+        {aboutImages.map((src, index) => (
           <div
             key={index}
             aria-hidden={index !== current}
@@ -37,14 +25,10 @@ export default function AboutSection() {
                 ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none"
             }`}
-            style={{
-              backgroundImage: `url(${src})`,
-              willChange: "opacity",
-            }}
+            style={{ backgroundImage: `url(${src})`, willChange: "opacity" }}
           />
         ))}
 
-        {/* Darker top-to-bottom gradient overlay */}
         <div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none"
@@ -55,20 +39,16 @@ export default function AboutSection() {
         />
       </div>
 
-      {/* Softer black overlay at 60% opacity */}
       <div className="absolute inset-0 bg-black/60 z-10" />
 
-      {/* Content */}
       <div className="relative z-20 flex items-center justify-center h-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 text-white">
-          {/* Left: Title */}
           <div className="self-start">
             <h2 className="text-4xl md:text-5xl font-extrabold uppercase leading-tight">
               ABOUT ME
             </h2>
           </div>
 
-          {/* Right: Description */}
           <div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               A Senior 3D Generalist and short filmmaker with over 9 years of
