@@ -5,7 +5,7 @@ export default function ContactSection() {
     <section className="bg-black text-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left: Info */}
-        <div className="self-start">
+        <div className="self-start" id="contact">
           <h2 className="text-3xl md:text-4xl font-extrabold leading-none uppercase mb-6">
             LET&apos;S CONNECT
           </h2>
