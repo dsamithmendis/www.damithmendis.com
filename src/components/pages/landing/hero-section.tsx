@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { FlipWords } from "@/components/ui/flip-words";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
@@ -12,9 +11,10 @@ import {
   HeroLinks,
 } from "@/components/lib/hero-section";
 
-export default function HeroSection() {
-  const { basePath } = useRouter();
+// ✅ Use environment variable for GitHub Pages compatibility
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
       {/* Background Video */}
@@ -44,6 +44,7 @@ export default function HeroSection() {
 
           {/* Buttons */}
           <div className="mt-4 flex justify-start gap-4 flex-wrap">
+            {/* Internal link using Next.js Link */}
             <Link
               href="/#contact"
               className="bg-[#D3E97A] text-black px-5 py-2 rounded-full font-semibold hover:bg-lime-300 transition"
@@ -51,6 +52,7 @@ export default function HeroSection() {
               CONTACT ME
             </Link>
 
+            {/* Social Links */}
             {HeroLinks.map((link, i) =>
               link.href.startsWith("/") ? (
                 <Link
