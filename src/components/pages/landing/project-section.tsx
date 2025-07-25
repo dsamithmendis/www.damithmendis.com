@@ -6,6 +6,8 @@ import { projects, movingCardItems } from "@/components/lib/project-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function ProjectSection() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalImages, setModalImages] = useState<string[]>([]);
@@ -46,7 +48,7 @@ export default function ProjectSection() {
   return (
     <section className="w-full bg-black py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        {/* Heading */}
+
         <div className="mb-12 text-white">
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase">
             featured projects
@@ -58,13 +60,11 @@ export default function ProjectSection() {
           </p>
         </div>
 
-        {/* Projects List */}
         {projects.map((project, index) => (
           <div
             key={index}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16"
           >
-            {/* Project Image */}
             <div
               className="relative cursor-pointer"
               onClick={() => openGallery(project.images || [project.image])}
@@ -81,7 +81,7 @@ export default function ProjectSection() {
                   {project.tag}
                 </span>
                 <Image
-                  src={project.image}
+                  src={`${basePath}${project.image}`}
                   alt={project.title}
                   width={600}
                   height={400}
@@ -91,7 +91,6 @@ export default function ProjectSection() {
               </div>
             </div>
 
-            {/* Project Info */}
             <div className="bg-black text-white">
               <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
               <p className="text-gray-400 mb-6">{project.description}</p>
@@ -106,7 +105,6 @@ export default function ProjectSection() {
                 </div>
               </div>
 
-              {/* Buttons */}
               <div className="flex gap-4 flex-wrap">
                 <a
                   href={project.youtubeLink}
@@ -124,7 +122,7 @@ export default function ProjectSection() {
                   className="flex items-center gap-2 border border-gray-700 text-[#D3E97A] px-5 py-2 rounded-full hover:bg-white/10 transition cursor-pointer"
                 >
                   <Image
-                    src="/icons/artstation-brands-solid.svg"
+                    src={`${basePath}/icons/artstation-brands-solid.svg`}
                     alt="ArtStation"
                     width={20}
                     height={20}
@@ -136,7 +134,6 @@ export default function ProjectSection() {
           </div>
         ))}
 
-        {/* Modal Gallery */}
         {isModalOpen && (
           <div
             className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
@@ -169,7 +166,7 @@ export default function ProjectSection() {
                 </button>
 
                 <Image
-                  src={modalImages[currentIndex]}
+                  src={`${basePath}${modalImages[currentIndex]}`}
                   alt={`Gallery image ${currentIndex + 1}`}
                   width={1000}
                   height={600}
@@ -192,14 +189,16 @@ export default function ProjectSection() {
                 {modalImages.map((img, idx) => (
                   <Image
                     key={idx}
-                    src={img}
+                    src={`${basePath}${img}`}
                     alt={`Thumbnail ${idx + 1}`}
                     width={80}
                     height={60}
-                    loading="lazy" // lazy load thumbnails
+                    loading="lazy"
                     onClick={() => setCurrentIndex(idx)}
                     className={`rounded border cursor-pointer ${
-                      idx === currentIndex ? "border-white" : "border-gray-600"
+                      idx === currentIndex
+                        ? "border-white"
+                        : "border-gray-600"
                     }`}
                   />
                 ))}
@@ -209,7 +208,6 @@ export default function ProjectSection() {
         )}
       </div>
 
-      {/* Scrolling Cards */}
       <InfiniteMovingCards
         items={movingCardItems}
         speed="normal"
