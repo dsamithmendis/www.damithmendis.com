@@ -17,7 +17,7 @@ export default function HeroSection() {
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
-        src="/videos/background-video.mp4"
+        src="@/videos/background-video.mp4"
         autoPlay
         muted
         loop
@@ -106,7 +106,7 @@ export default function HeroSection() {
         <div className="flex justify-center items-center py-20 md:mt-0 md:py-0">
           <BackgroundGradient className="leading-none rounded-[22px] bg-white dark:bg-zinc-900">
             <Image
-              src="/images/damith.webp"
+              src="@/images/damith.webp"
               alt="Damith Mendis"
               width={520}
               height={520}
