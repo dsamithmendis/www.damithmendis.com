@@ -31,7 +31,7 @@ export default function HeroSection() {
       <div className="max-w-6xl w-full flex flex-col md:grid md:grid-cols-2 md:mx-0 mx-4">
 
         <div className="flex flex-col justify-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold uppercase">
+          <h1 className="mt-20 md:mt-0 text-4xl md:text-5xl font-extrabold uppercase">
             hi, i am
             <TypewriterEffectSmooth mainwords={HeroMainWords} />
           </h1>

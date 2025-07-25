@@ -1,18 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Gallery", href: "/default/gallery" },
-  { name: "Contact", href: "/contact" },
-];
+import { useEffect, useState } from "react";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,64 +13,82 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Trigger on load
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinkClasses =
+    "text-[#D3E97A] hover:text-white text-sm sm:text-base font-semibold uppercase transition cursor-pointer";
+
   return (
-    <section
-      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300
-        ${showHeader ? "bg-black/80 backdrop-blur-md" : "bg-transparent"}
-        rounded-full px-6 sm:px-8 py-2 w-[80vw] sm:w-full sm:max-w-3xl md:max-w-4xl lg:max-w-5xl
-        ${showHeader ? "translate-y-0" : "-translate-y-full"}
-      `}
-    >
-      <div className="flex items-center justify-center h-16 relative">
-        {/* Logo (optional) */}
-        <div className="absolute left-4 text-2xl font-bold text-[#D3E97A] uppercase">
-          {/* LOGO */}
-        </div>
+    <>
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          showHeader
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        } ${isMobileMenuOpen ? "bg-black" : "bg-black/70"}`}
+      >
+        <div className="max-w-7xl mx-auto flex justify-end items-center px-4 py-4 w-full">
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-gray-300 font-medium hover:text-[#D3E97A] transition"
-            >
-              {link.name}
+          <div className="hidden sm:flex space-x-6">
+            <Link href="/" className={navLinkClasses}>
+              Home
             </Link>
-          ))}
-        </nav>
+            <Link href="/about" className={navLinkClasses}>
+              About
+            </Link>
+            <Link href="/gallery" className={navLinkClasses}>
+              Gallery
+            </Link>
+          </div>
 
-        {/* Mobile Menu Button */}
-        <div className="absolute right-4 md:hidden">
+          <div className="sm:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="text-[#D3E97A] text-2xl cursor-pointer"
+              aria-label="Open menu"
+            >
+              <i className="ri-menu-line" />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {isMobileMenuOpen && (
+        <div className="fixed top-0 left-0 w-full h-screen bg-black/95 backdrop-blur-md z-50 flex flex-col items-center justify-center space-y-8 px-6 sm:hidden">
+          
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-300 text-xl focus:outline-none"
-            aria-label="Toggle menu"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="absolute top-4 right-4 text-[#D3E97A] text-3xl cursor-pointer"
+            aria-label="Close menu"
           >
-            <i className={`ri-${isOpen ? "close" : "menu"}-line`} />
+            <i className="ri-close-line" />
           </button>
-        </div>
-      </div>
-
-      {/* Mobile Nav */}
-      {isOpen && (
-        <div className="md:hidden mt-2 space-y-2 text-center">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="block text-gray-300 px-4 py-2 rounded hover:bg-gray-800 transition"
-            >
-              {link.name}
-            </Link>
-          ))}
+          <Link
+            href="/"
+            className={navLinkClasses}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className={navLinkClasses}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            About
+          </Link>
+          <Link
+            href="/gallery"
+            className={navLinkClasses}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Gallery
+          </Link>
         </div>
       )}
-    </section>
+    </>
   );
 }
