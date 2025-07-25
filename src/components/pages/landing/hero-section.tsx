@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { FlipWords } from "@/components/ui/flip-words";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
@@ -40,34 +41,64 @@ export default function HeroSection() {
 
           {/* Buttons */}
           <div className="mt-4 flex justify-start gap-4 flex-wrap">
-            <a
-              href="/contact"
+            {/* Internal link using Next.js Link */}
+            <Link
+              href="/#contact"
               className="bg-[#D3E97A] text-black px-5 py-2 rounded-full font-semibold hover:bg-lime-300 transition"
             >
               CONTACT ME
-            </a>
+            </Link>
 
-            {HeroLinks.map((link, i) => (
-              <a
-                key={i}
-                href={link.href}
-                aria-label={link.label}
-                title={link.label}
-                className="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-white/20 transition"
-              >
-                {link.imageSrc ? (
-                  <Image
-                    src={link.imageSrc}
-                    alt={link.label}
-                    width={24}
-                    height={24}
-                    className="w-5 h-5"
-                  />
-                ) : (
-                  <i className={`${link.iconClass} text-2xl text-[#D3E97A]`} />
-                )}
-              </a>
-            ))}
+            {/* Social Links */}
+            {HeroLinks.map((link, i) =>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={i}
+                  href={link.href}
+                  aria-label={link.label}
+                  title={link.label}
+                  className="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-white/20 transition"
+                >
+                  {link.imageSrc ? (
+                    <Image
+                      src={link.imageSrc}
+                      alt={link.label}
+                      width={24}
+                      height={24}
+                      className="w-5 h-5"
+                    />
+                  ) : (
+                    <i
+                      className={`${link.iconClass} text-2xl text-[#D3E97A]`}
+                    />
+                  )}
+                </Link>
+              ) : (
+                <a
+                  key={i}
+                  href={link.href}
+                  aria-label={link.label}
+                  title={link.label}
+                  className="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-white/20 transition"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.imageSrc ? (
+                    <Image
+                      src={link.imageSrc}
+                      alt={link.label}
+                      width={24}
+                      height={24}
+                      className="w-5 h-5"
+                    />
+                  ) : (
+                    <i
+                      className={`${link.iconClass} text-2xl text-[#D3E97A]`}
+                    />
+                  )}
+                </a>
+              )
+            )}
           </div>
         </div>
 

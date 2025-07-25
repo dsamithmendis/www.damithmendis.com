@@ -81,40 +81,74 @@ export const projects: ProjectData[] = [
   },
 ];
 
-export const slideData = [
+export type MovingCardItem =
+  | { quote: string; name: string; title: string }
+  | { iframe: string; name: string; title: string };
+
+export const movingCardItems: MovingCardItem[] = [
   {
-    title: "Mystic Mountains",
-    button: "Explore Component",
-    src: "/images/cars/image-1.webp",
+    iframe: `<iframe 
+      src="https://www.behance.net/embed/project/206872791?ilo0=1" 
+      style="width:100%; height:100%; border:none;" 
+      allowfullscreen 
+      lazyload 
+      allow="clipboard-write" 
+      scrolling="no" 
+      refererPolicy="strict-origin-when-cross-origin">
+    </iframe>`,
+    name: "ACASA",
+    title: "Space and Perception",
   },
   {
-    title: "Urban Dreams",
-    button: "Explore Component",
-    src: "/images/cars/image-2.webp",
+    iframe: `<iframe 
+      src="https://www.behance.net/embed/project/219401097?ilo0=1" 
+      style="width:100%; height:100%; border:none;" 
+      allowfullscreen 
+      lazyload 
+      allow="clipboard-write" 
+      scrolling="no" 
+      refererPolicy="strict-origin-when-cross-origin">
+    </iframe>`,
+    name: "ACASA",
+    title: "Home Like No Other",
   },
   {
-    title: "Neon Nights",
-    button: "Explore Component",
-    src: "/images/cars/image-3.webp",
+    iframe: `<iframe 
+      src="https://www.behance.net/embed/project/221448773?ilo0=1" 
+      style="width:100%; height:100%; border:none;" 
+      allowfullscreen 
+      lazyload 
+      allow="clipboard-write" 
+      scrolling="no" 
+      refererPolicy="strict-origin-when-cross-origin">
+    </iframe>`,
+    name: "ACASA",
+    title: "Story of 146 Residencies",
   },
   {
-    title: "Desert Whispers",
-    button: "Explore Component",
-    src: "/images/cars/image-4.webp",
+    iframe: `<iframe 
+      src="https://www.behance.net/embed/project/221474815?ilo0=1" 
+      style="width:100%; height:100%; border:none;" 
+      allowfullscreen 
+      lazyload 
+      allow="clipboard-write" 
+      scrolling="no" 
+      refererPolicy="strict-origin-when-cross-origin">
+    </iframe>`,
+    name: "Magic Cube",
+    title: "Made in Sri Lanka",
   },
   {
-    title: "Desert Whispers",
-    button: "Explore Component",
-    src: "/images/cars/image-5.webp",
-  },
-  {
-    title: "Desert Whispers",
-    button: "Explore Component",
-    src: "/images/cars/image-6.webp",
-  },
-  {
-    title: "Desert Whispers",
-    button: "Explore Component",
-    src: "/images/cars/image-7.webp",
+    iframe: `<iframe 
+      src="https://www.behance.net/embed/project/206134309?ilo0=1" 
+      style="width:100%; height:100%; border:none;" 
+      allowfullscreen 
+      lazyload 
+      allow="clipboard-write" 
+      scrolling="no" 
+      refererPolicy="strict-origin-when-cross-origin">
+    </iframe>`,
+    name: "ACASA",
+    title: "Exterior House 3D Visualization",
   },
 ];
