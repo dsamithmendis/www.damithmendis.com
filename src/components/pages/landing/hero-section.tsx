@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
@@ -15,6 +16,38 @@ import {
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function HeroSection() {
+  const [showGrid, setShowGrid] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (!mobile) setShowGrid(false);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile && showGrid) {
+      const timeout = setTimeout(() => {
+        setShowGrid(false);
+      }, 3000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isMobile, showGrid]);
+
+  const handleImageClick = () => {
+    if (isMobile) {
+      setShowGrid((prev) => !prev);
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
       <video
@@ -28,7 +61,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
       <div className="max-w-6xl w-full flex flex-col md:grid md:grid-cols-2 px-4 md:px-0">
-        {/* Left text column */}
+
         <div className="flex flex-col justify-center">
           <h1 className="mt-20 md:mt-0 text-4xl md:text-5xl font-extrabold uppercase">
             hi, i am
@@ -101,14 +134,48 @@ export default function HeroSection() {
             className="relative group rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden
               w-[90vw] max-w-[520px] h-[90vw] max-h-[520px]"
           >
-            <Image
-              src={`${basePath}${heroImages[0]}`}
-              alt="Default Hero"
-              fill
-              className="rounded-[22px] object-cover transition-opacity duration-500 group-hover:opacity-0"
-            />
 
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-2 p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div
+              onClick={handleImageClick}
+              className="relative w-full h-full cursor-pointer select-none"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") handleImageClick();
+              }}
+              aria-pressed={showGrid}
+              aria-label="Toggle image grid"
+            >
+              <Image
+                src={`${basePath}${heroImages[0]}`}
+                alt="Default Hero"
+                fill
+                className={`rounded-[22px] object-cover transition-opacity duration-500
+                  ${
+                    isMobile
+                      ? showGrid
+                        ? "opacity-0"
+                        : "opacity-100"
+                      : "opacity-100 group-hover:opacity-0"
+                  }
+                `}
+              />
+            </div>
+
+            <div
+              className={`absolute inset-0 grid grid-cols-2 grid-rows-2 gap-2 p-2
+                rounded-[22px]
+                transition-opacity duration-500
+                pointer-events-auto
+                ${
+                  isMobile
+                    ? showGrid
+                      ? "opacity-100"
+                      : "opacity-0 pointer-events-none"
+                    : "opacity-0 group-hover:opacity-100 pointer-events-auto"
+                }
+              `}
+            >
               {heroImages.map((src, index) => (
                 <div
                   key={index}
@@ -119,6 +186,7 @@ export default function HeroSection() {
                     alt={`Grid ${index + 1}`}
                     fill
                     className="object-cover w-full h-full transition-transform duration-300 hover:scale-105 hover:-translate-y-1"
+                    draggable={false}
                   />
                 </div>
               ))}
