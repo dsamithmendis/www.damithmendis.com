@@ -45,7 +45,10 @@ export default function AboutSection() {
       <div className="relative z-20 flex items-center justify-center h-full px-4 md:px-0">
         <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 text-white">
           <div className="self-start">
-            <h2 id="about-me" className="text-3xl md:text-4xl font-extrabold uppercase">
+            <h2
+              id="about-me"
+              className="text-3xl md:text-4xl font-extrabold uppercase"
+            >
               about me
             </h2>
           </div>
@@ -60,13 +63,12 @@ export default function AboutSection() {
               modeling, lighting, and concept development.
             </p>
 
-            <Link href="#">
-              <a
-                className="text-[#D3E97A] font-medium border-b border-[#D3E97A] inline-block hover:text-lime-300 transition"
-              >
-                MORE ABOUT ME{" "}
-                <i className="ri-arrow-right-up-line ml-1 align-middle" />
-              </a>
+            <Link
+              href="/"
+              className="text-[#D3E97A] font-medium border-b border-[#D3E97A] inline-block hover:text-lime-300 transition"
+            >
+              MORE ABOUT ME{" "}
+              <i className="ri-arrow-right-up-line ml-1 align-middle" />
             </Link>
           </div>
         </div>

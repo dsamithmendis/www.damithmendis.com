@@ -38,13 +38,13 @@ export default function Header() {
             <Link href="/" className={navLinkClasses}>
               home
             </Link>
-            <Link href={`${basePath}/#about-me`} className={navLinkClasses}>
+            <Link href="#about-me" className={navLinkClasses}>
               about
             </Link>
             <Link href={`${basePath}/showcase`} className={navLinkClasses}>
               showcase
             </Link>
-            <Link href={`${basePath}/#contact-me`} className={navLinkClasses}>
+            <Link href="#contact-me" className={navLinkClasses}>
               contact
             </Link>
           </div>
@@ -79,7 +79,7 @@ export default function Header() {
             home
           </Link>
           <Link
-            href={`${basePath}/#about-me`}
+            href="#about-me"
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
@@ -93,7 +93,7 @@ export default function Header() {
             showcase
           </Link>
           <Link
-            href={`${basePath}/#contact-me`}
+            href="#contact-me"
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >

@@ -42,7 +42,7 @@ export default function HeroSection() {
 
           <div className="mt-4 flex flex-wrap gap-4">
             <Link
-              href={`${basePath}/#contact-me`}
+              href="#contact-me"
               className="bg-[#D3E97A] text-black px-5 py-2 rounded-full font-semibold hover:bg-lime-300 transition"
             >
               CONTACT ME
