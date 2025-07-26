@@ -46,14 +46,14 @@ export default function ProjectSection() {
   }, [isModalOpen, modalImages.length, closeModal]);
 
   return (
-    <section className="w-full bg-black py-20 px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-black py-20 px-4 md:px-0">
       <div className="max-w-6xl mx-auto">
 
         <div className="mb-12 text-white">
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase">
             featured projects
           </h2>
-          <p className="mt-4 text-lg text-gray-400">
+          <p className="mt-4 text-lg text-neutral-400">
             Here lies a collection of digital dreams—projects where I blend
             design, detail, and direction to turn ideas into dimensional
             experiences.
@@ -76,8 +76,8 @@ export default function ProjectSection() {
                 proximity={64}
                 inactiveZone={0.01}
               />
-              <div className="bg-[#111] relative rounded-2xl p-6 md:p-8 border border-gray-800">
-                <span className="absolute bg-gray-800 text-white text-xs font-medium px-3 py-1 rounded-full z-10">
+              <div className="bg-[#111] relative rounded-2xl p-6 md:p-8 border border-neutral-800">
+                <span className="absolute bg-neutral-800 text-white text-xs font-medium px-3 py-1 rounded-full z-10">
                   {project.tag}
                 </span>
                 <Image
@@ -85,7 +85,7 @@ export default function ProjectSection() {
                   alt={project.title}
                   width={600}
                   height={400}
-                  className="rounded-xl mt-10 w-full border border-gray-800"
+                  className="rounded-xl mt-10 w-full border border-neutral-800"
                   priority
                 />
               </div>
@@ -93,9 +93,9 @@ export default function ProjectSection() {
 
             <div className="bg-black text-white">
               <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-              <p className="text-gray-400 mb-6">{project.description}</p>
-              <div className="text-sm text-gray-400 space-y-2 mb-6">
-                <div className="flex justify-between border-t border-gray-700 pt-2">
+              <p className="text-neutral-400 mb-6">{project.description}</p>
+              <div className="text-sm text-neutral-400 space-y-2 mb-6">
+                <div className="flex justify-between border-t border-neutral-700 pt-2">
                   <span className="text-white">Year</span>
                   <span>{project.year}</span>
                 </div>
@@ -198,7 +198,7 @@ export default function ProjectSection() {
                     className={`rounded border cursor-pointer ${
                       idx === currentIndex
                         ? "border-white"
-                        : "border-gray-600"
+                        : "border-neutral-800"
                     }`}
                   />
                 ))}
