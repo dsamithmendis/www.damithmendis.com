@@ -19,3 +19,10 @@ export const HeroLinks = [
     iconClass: "ri-behance-fill",
   },
 ];
+
+export const heroImages = [
+  "/images/hero-grid/image-1.webp",
+  "/images/hero-grid/image-2.webp",
+  "/images/hero-grid/image-3.webp",
+  "/images/hero-grid/image-4.webp",
+];
