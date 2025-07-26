@@ -5,7 +5,9 @@ import Footer from "@/components/shared/footer";
 import Image from "next/image";
 import { gallerySections } from "@/components/lib/gallery-data";
 
-export default function Gallery() {
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+export default function Showcase() {
   return (
     <>
       <Header />
@@ -13,7 +15,7 @@ export default function Gallery() {
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <h2 className="text-3xl md:text-4xl font-extrabold leading-none uppercase text-white">
-              3d modeling
+              showcase
             </h2>
 
             <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -33,7 +35,7 @@ export default function Gallery() {
                           className={image.className || "w-full"}
                         >
                           <Image
-                            src={image.src}
+                            src={basePath + image.src}
                             alt={image.alt}
                             width={image.width}
                             height={image.height}

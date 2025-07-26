@@ -34,13 +34,13 @@ export default function Header() {
 
           <div className="hidden sm:flex space-x-6">
             <Link href="/" className={navLinkClasses}>
-              Home
+              home
             </Link>
             <Link href="/about" className={navLinkClasses}>
-              About
+              about
             </Link>
-            <Link href="/gallery" className={navLinkClasses}>
-              Gallery
+            <Link href="/showcase" className={navLinkClasses}>
+              showcase
             </Link>
           </div>
 
@@ -71,21 +71,21 @@ export default function Header() {
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Home
+            home
           </Link>
           <Link
             href="/about"
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            About
+            about
           </Link>
           <Link
-            href="/gallery"
+            href="/showcase"
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Gallery
+            showcase
           </Link>
         </div>
       )}
