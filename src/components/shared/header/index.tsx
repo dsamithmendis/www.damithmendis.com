@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function Header() {
   const [showHeader, setShowHeader] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,7 +21,7 @@ export default function Header() {
   }, []);
 
   const navLinkClasses =
-    "text-[#D3E97A] hover:text-white text-sm sm:text-base font-semibold uppercase transition cursor-pointer";
+    "text-[#D3E97A] hover:text-lime-400 text-sm sm:text-base font-semibold uppercase transition cursor-pointer";
 
   return (
     <>
@@ -36,18 +38,21 @@ export default function Header() {
             <Link href="/" className={navLinkClasses}>
               home
             </Link>
-            <Link href="/about" className={navLinkClasses}>
+            <Link href={`${basePath}/#about-me`} className={navLinkClasses}>
               about
             </Link>
-            <Link href="/showcase" className={navLinkClasses}>
+            <Link href={`${basePath}/showcase`} className={navLinkClasses}>
               showcase
+            </Link>
+            <Link href={`${basePath}/#contact-me`} className={navLinkClasses}>
+              contact
             </Link>
           </div>
 
           <div className="sm:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="text-[#D3E97A] text-2xl cursor-pointer"
+              className="text-[#D3E97A] hover:text-lime-400 text-2xl cursor-pointer"
               aria-label="Open menu"
             >
               <i className="ri-menu-line" />
@@ -61,7 +66,7 @@ export default function Header() {
           
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="absolute top-4 right-4 text-[#D3E97A] text-3xl cursor-pointer"
+            className="absolute top-4 right-4 text-[#D3E97A] hover:text-lime-400 text-3xl cursor-pointer"
             aria-label="Close menu"
           >
             <i className="ri-close-line" />
@@ -74,18 +79,25 @@ export default function Header() {
             home
           </Link>
           <Link
-            href="/about"
+            href={`${basePath}/#about-me`}
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             about
           </Link>
           <Link
-            href="/showcase"
+            href={`${basePath}/showcase`}
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             showcase
+          </Link>
+          <Link
+            href={`${basePath}/#contact-me`}
+            className={navLinkClasses}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            contact
           </Link>
         </div>
       )}
