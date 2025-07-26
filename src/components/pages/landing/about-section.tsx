@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { aboutImages } from "@/components/lib/about-section";
 
 export default function AboutSection() {
@@ -59,13 +60,14 @@ export default function AboutSection() {
               modeling, lighting, and concept development.
             </p>
 
-            <a
-              href="/"
-              className="text-[#D3E97A] font-medium border-b border-[#D3E97A] inline-block hover:text-lime-300 transition"
-            >
-              MORE ABOUT ME{" "}
-              <i className="ri-arrow-right-up-line ml-1 align-middle" />
-            </a>
+            <Link href="#">
+              <a
+                className="text-[#D3E97A] font-medium border-b border-[#D3E97A] inline-block hover:text-lime-300 transition"
+              >
+                MORE ABOUT ME{" "}
+                <i className="ri-arrow-right-up-line ml-1 align-middle" />
+              </a>
+            </Link>
           </div>
         </div>
       </div>
