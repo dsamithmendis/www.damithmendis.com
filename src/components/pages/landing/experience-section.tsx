@@ -58,7 +58,7 @@ export default function ExperienceSection() {
     setActiveIndex(index);
     setTimeout(() => {
       setActiveIndex(null);
-    }, 1000); // remove active state after 1 second
+    }, 1000);
   };
 
   return (

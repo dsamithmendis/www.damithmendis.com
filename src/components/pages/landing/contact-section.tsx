@@ -60,7 +60,8 @@ export default function ContactSection() {
         <div>
           {state.succeeded ? (
             <p className="text-[#D3E97A] text-lg">
-              We&apos;ve received your message and are reviewing it with care. Thanks for reaching out!
+              We&apos;ve received your message and are reviewing it with care.
+              Thanks for reaching out!
             </p>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -72,6 +73,7 @@ export default function ContactSection() {
                   type="text"
                   id="name"
                   name="name"
+                  placeholder="Your name"
                   required
                   className="w-full p-2 bg-[#111] border-none rounded"
                 />
@@ -85,6 +87,7 @@ export default function ContactSection() {
                   type="email"
                   id="email"
                   name="email"
+                  placeholder="you@example.com"
                   required
                   className="w-full p-2 bg-[#111] border-none rounded"
                 />
@@ -103,6 +106,7 @@ export default function ContactSection() {
                   type="text"
                   id="subject"
                   name="subject"
+                  placeholder="What's this about?"
                   className="w-full p-2 bg-[#111] border-none rounded"
                 />
               </div>
@@ -115,6 +119,7 @@ export default function ContactSection() {
                   id="message"
                   name="message"
                   rows={4}
+                  placeholder="Write your message here..."
                   required
                   className="w-full p-2 bg-[#111] border-none rounded"
                 ></textarea>
