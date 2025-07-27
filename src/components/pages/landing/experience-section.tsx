@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { experienceItems } from "@/components/lib/experience-section";
 
 interface ExperienceItemProps {
@@ -8,11 +8,27 @@ interface ExperienceItemProps {
   company?: string;
   date: string;
   link: string;
+  isActive: boolean;
+  onTouch: () => void;
 }
 
-function ExperienceItem({ title, company, date, link }: ExperienceItemProps) {
+function ExperienceItem({
+  title,
+  company,
+  date,
+  link,
+  isActive,
+  onTouch,
+}: ExperienceItemProps) {
   return (
-    <div className="bg-[#111] border border-neutral-800 rounded-2xl p-6 shadow-md transition duration-300 transform hover:scale-95 hover:border-lime-400 hover:shadow-lime-400/30">
+    <div
+      onTouchStart={onTouch}
+      className={`bg-[#111] border border-neutral-800 rounded-2xl p-6 shadow-md transition duration-300 transform ${
+        isActive
+          ? "scale-95 border-lime-400 shadow-lime-400/30"
+          : "hover:scale-95 hover:border-lime-400 hover:shadow-lime-400/30"
+      }`}
+    >
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
         <h3 className="text-white text-lg font-semibold">{title}</h3>
         <span className="text-sm text-neutral-400">{date}</span>
@@ -36,6 +52,14 @@ function ExperienceItem({ title, company, date, link }: ExperienceItemProps) {
 
 export default function ExperienceSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const handleTouch = (index: number) => {
+    setActiveIndex(index);
+    setTimeout(() => {
+      setActiveIndex(null);
+    }, 1000); // remove active state after 1 second
+  };
 
   return (
     <section className="w-full bg-black py-20 px-4 md:px-0">
@@ -49,7 +73,12 @@ export default function ExperienceSection() {
           className="max-h-[500px] overflow-y-auto pr-3 space-y-6 custom-scrollbar"
         >
           {experienceItems.map((item, index) => (
-            <ExperienceItem key={index} {...item} />
+            <ExperienceItem
+              key={index}
+              {...item}
+              isActive={activeIndex === index}
+              onTouch={() => handleTouch(index)}
+            />
           ))}
         </div>
       </div>

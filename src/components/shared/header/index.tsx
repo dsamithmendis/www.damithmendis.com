@@ -35,10 +35,10 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex justify-end items-center px-4 py-4 w-full">
 
           <div className="hidden sm:flex space-x-6">
-            <Link href="/" className={navLinkClasses}>
+            <Link href={`/${basePath}`} className={navLinkClasses}>
               home
             </Link>
-            <Link href="#about-me" className={navLinkClasses}>
+            <Link href={`/${basePath}#about-me`} className={navLinkClasses}>
               about
             </Link>
             <Link href="/showcase" className={navLinkClasses}>
@@ -72,7 +72,7 @@ export default function Header() {
             <i className="ri-close-line" />
           </button>
           <Link
-            href="/"
+            href={`/${basePath}`}
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
