@@ -8,7 +8,7 @@ import AboutSection from "@/components/pages/landing/about-section";
 import ContactSection from "@/components/pages/landing/contact-section";
 import ExperienceSection from "@/components/pages/landing/experience-section";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Header />
