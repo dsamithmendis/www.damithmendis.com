@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function Header() {
-  const [showHeader, setShowHeader] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export default function HeaderShowcase() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowHeader(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -18,35 +18,28 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinkClasses =
+  const linkStyle =
     "text-[#D3E97A] hover:text-lime-400 text-sm sm:text-base font-semibold uppercase transition cursor-pointer";
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          showHeader
+          isScrolled
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-        } ${isMobileMenuOpen ? "bg-black" : "bg-black/70"}`}
+        } ${mobileMenuVisible ? "bg-black" : "bg-black/70"}`}
       >
         <div className="max-w-7xl mx-auto flex justify-end items-center px-4 py-4 w-full">
-
           <div className="hidden sm:flex space-x-6">
-            <Link href="#about-me" className={navLinkClasses}>
-              about
-            </Link>
-            <Link href="#contact-me" className={navLinkClasses}>
-              contact
-            </Link>
-            <Link href="/showcase" className={navLinkClasses}>
-              showcase
+            <Link href="/" className={linkStyle}>
+              back
             </Link>
           </div>
 
           <div className="sm:hidden">
             <button
-              onClick={() => setIsMobileMenuOpen(true)}
+              onClick={() => setMobileMenuVisible(true)}
               className="text-[#D3E97A] hover:text-lime-400 text-2xl cursor-pointer"
               aria-label="Open menu"
             >
@@ -56,11 +49,10 @@ export default function Header() {
         </div>
       </nav>
 
-      {isMobileMenuOpen && (
+      {mobileMenuVisible && (
         <div className="fixed top-0 left-0 w-full h-screen bg-black/95 backdrop-blur-md z-50 flex flex-col items-center justify-center space-y-8 px-6 sm:hidden">
-          
           <button
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => setMobileMenuVisible(false)}
             className="absolute top-4 right-4 text-[#D3E97A] hover:text-lime-400 text-3xl cursor-pointer"
             aria-label="Close menu"
           >
@@ -68,25 +60,11 @@ export default function Header() {
           </button>
 
           <Link
-            href="#about-me"
-            className={navLinkClasses}
-            onClick={() => setIsMobileMenuOpen(false)}
+            href="/"
+            className={linkStyle}
+            onClick={() => setMobileMenuVisible(false)}
           >
-            about
-          </Link>
-          <Link
-            href="#contact-me"
-            className={navLinkClasses}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            contact
-          </Link>
-          <Link
-            href="/showcase"
-            className={navLinkClasses}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            showcase
+            back
           </Link>
         </div>
       )}
