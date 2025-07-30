@@ -2,7 +2,7 @@
 
 **© 2025 Developed by Samith Mendis**  
 
-A personal portfolio website built with Next.js -React- Tailwind CSS, showcasing skills, projects, contact information and etc.
+Showcasing development expertise, project highlights, and connection points.
 
 > ⚠️ This product is proprietary and licensed. Unauthorized redistribution or resale is strictly prohibited.
 
