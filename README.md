@@ -3,15 +3,15 @@
 **Developed by Samith Mendis**  
 © 2025 All Rights Reserved
 
-A personal portfolio website built with Flask, HTML, CSS (Tailwind + custom), showcasing skills, projects, and contact information.
+A personal portfolio website built with Next.js -React- Tailwind CSS, showcasing skills, projects, and contact information.
 
 > ⚠️ This product is proprietary and licensed. Unauthorized redistribution or resale is strictly prohibited.
 
 ## 🛠️ Technologies Used
 
-- **Framework**: Next.js, React, Tailwind CSS
+- **Framework**: Next.js -React- Tailwind CSS
 - **Frontend**: HTML, CSS, JavaScript, TypeScript
-- **Email**: SMTP integration for contact form
+- **Backend**: Static frontend contact form
 
 ## 📜 License
 
