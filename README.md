@@ -9,7 +9,8 @@ A personal portfolio website built with Flask, HTML, CSS (Tailwind + custom), sh
 
 ## 🛠️ Technologies Used
 
-- **Frontend**: HTML, Tailwind CSS, Custom CSS, JavaScript, TypeScript
+- **Framework**: Next.js, React, Tailwind CSS
+- **Frontend**: HTML, CSS, JavaScript, TypeScript
 - **Email**: SMTP integration for contact form
 
 ## 📜 License
