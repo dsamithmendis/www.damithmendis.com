@@ -1,4 +1,4 @@
-# Portfolio Website
+# Portfolio Website - Damith Mendis
 
 **© 2025 Developed by Samith Mendis**  
 
