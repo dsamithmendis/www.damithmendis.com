@@ -9,7 +9,7 @@ Showcasing development expertise, project highlights, and connection points.
 ## 🛠️ Technologies Used
 
 - **Framework**: Next.js -React- Tailwind CSS
-- **Frontend**: HTML5, Tailwind CSS, TypeScript
+- **Frontend**: HTML5, Tailwind CSS, TypeScript, JavaScript
 - **Backend**: Static frontend contact form
 
 ## 📜 License

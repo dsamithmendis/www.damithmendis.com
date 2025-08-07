@@ -1,12 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { gallerySections } from "@/components/lib/gallery-data";
+import { gallerySections, draggableItems } from "@/components/lib/gallery-data";
+import {
+  DraggableCardBody,
+  DraggableCardContainer,
+} from "@/components/ui/draggable-card";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Showcase() {
   return (
+    <>
       <section className="w-full bg-black py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12">
@@ -14,7 +19,26 @@ export default function Showcase() {
               showcase
             </h2>
 
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="hidden md:block mt-10 w-full mx-auto">
+              <DraggableCardContainer className="relative flex flex-wrap justify-center items-center gap-2">
+                {draggableItems.map((src, index) => (
+                  <DraggableCardBody
+                    key={index}
+                    className="relative w-[280px] h-[50px] cursor-grab"
+                  >
+                    <Image
+                      src={basePath + src}
+                      alt={`Draggable image ${index + 1}`}
+                      width={300}
+                      height={300}
+                      className="rounded-2xl object-cover w-full h-full"
+                    />
+                  </DraggableCardBody>
+                ))}
+              </DraggableCardContainer>
+            </div>
+
+            <div className="mt-10 grid gap-2 md:grid-cols-2">
               {gallerySections.map((section, idx) => (
                 <div
                   key={idx}
@@ -23,7 +47,9 @@ export default function Showcase() {
                   {section.images.map((row, rowIdx) => (
                     <div
                       key={rowIdx}
-                      className={`flex w-full ${row.length === 1 ? "" : "gap-4"}`}
+                      className={`flex w-full ${
+                        row.length === 1 ? "" : "gap-4"
+                      }`}
                     >
                       {row.map((image, imgIdx) => (
                         <div
@@ -47,5 +73,6 @@ export default function Showcase() {
           </div>
         </div>
       </section>
+    </>
   );
 }
