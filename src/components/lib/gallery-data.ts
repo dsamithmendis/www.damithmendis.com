@@ -331,3 +331,13 @@ export const gallerySections: GallerySection[] = [
     ],
   },
 ];
+
+export const draggableItems = [
+  "/images/cars/image-1.webp",
+  "/images/cars/image-2.webp",
+  "/images/cars/image-3.webp",
+  "/images/cars/image-4.webp",
+  "/images/cars/image-5.webp",
+  "/images/cars/image-6.webp",
+  "/images/cars/image-7.webp",
+];
