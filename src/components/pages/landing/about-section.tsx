@@ -67,7 +67,7 @@ export default function AboutSection() {
               href="/showcase"
               className="text-[#D3E97A] font-medium border-b border-[#D3E97A] inline-block hover:text-lime-300 transition"
             >
-              SHOWCASE{" "}
+              SHOWCASE
               <i className="text-2xl text-[#D3E97A] ri-arrow-right-up-line ml-1 align-middle" />
             </Link>
           </div>

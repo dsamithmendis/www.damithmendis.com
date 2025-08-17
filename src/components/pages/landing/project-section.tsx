@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { projects, movingCardItems } from "@/components/lib/project-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
@@ -12,6 +12,11 @@ export default function ProjectSection() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalImages, setModalImages] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(
+    new Array(projects.length).fill(false)
+  );
 
   const openGallery = (images: string[], index: number = 0) => {
     setModalImages(images);
@@ -25,6 +30,31 @@ export default function ProjectSection() {
     setCurrentIndex(0);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute("data-index"));
+          if (entry.isIntersecting) {
+            setVisibleCards((prev) => {
+              const updated = [...prev];
+              updated[index] = true;
+              return updated;
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+  
   useEffect(() => {
     const nextImage = () =>
       setCurrentIndex((prev) => (prev + 1) % modalImages.length);
@@ -48,9 +78,11 @@ export default function ProjectSection() {
   return (
     <section className="w-full bg-black py-20 px-4 md:px-0">
       <div className="max-w-6xl mx-auto">
-
         <div className="mb-12 text-white">
-          <h2 className="text-3xl md:text-4xl font-extrabold uppercase">
+          <h2
+            id="featured-projects"
+            className="text-3xl md:text-4xl font-extrabold uppercase"
+          >
             featured projects
           </h2>
           <p className="mt-4 text-lg text-neutral-400">
@@ -63,7 +95,15 @@ export default function ProjectSection() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16"
+            ref={(el) => {
+              cardRefs.current[index] = el ?? null;
+            }}
+            data-index={index}
+            className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 transition-all duration-700 ease-out transform ${
+              visibleCards[index]
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-20"
+            }`}
           >
             <div
               className="relative cursor-pointer"
