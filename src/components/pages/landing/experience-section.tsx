@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { experienceItems } from "@/components/lib/experience-section";
 
 interface ExperienceItemProps {
@@ -10,6 +10,7 @@ interface ExperienceItemProps {
   link: string;
   isActive: boolean;
   onTouch: () => void;
+  isVisible?: boolean;
 }
 
 function ExperienceItem({
@@ -19,14 +20,18 @@ function ExperienceItem({
   link,
   isActive,
   onTouch,
+  isVisible = false,
 }: ExperienceItemProps) {
   return (
     <div
       onTouchStart={onTouch}
-      className={`bg-[#111] border border-neutral-800 rounded-2xl p-6 shadow-md transition duration-300 transform ${
+      onMouseDown={onTouch}
+      className={`bg-[#111] border border-neutral-800 rounded-2xl p-6 shadow-md transition-all duration-700 transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      } ${
         isActive
           ? "scale-95 border-lime-400 shadow-lime-400/30"
-          : "hover:scale-95 hover:border-lime-400 hover:shadow-lime-400/30"
+          : "hover:scale-95 hover:border-lime-400 hover:shadow-lime-400/30 active:scale-95 active:border-lime-400 active:shadow-lime-400/30"
       }`}
     >
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
@@ -53,13 +58,41 @@ function ExperienceItem({
 export default function ExperienceSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [visibleItems, setVisibleItems] = useState<boolean[]>(
+    new Array(experienceItems.length).fill(false)
+  );
 
   const handleTouch = (index: number) => {
     setActiveIndex(index);
-    setTimeout(() => {
-      setActiveIndex(null);
-    }, 1000);
+    setTimeout(() => setActiveIndex(null), 300);
   };
+
+  const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute("data-index"));
+          if (entry.isIntersecting) {
+            setVisibleItems((prev) => {
+              const updated = [...prev];
+              updated[index] = true;
+              return updated;
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    itemRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="w-full bg-black py-20 px-4 md:px-0">
@@ -73,12 +106,20 @@ export default function ExperienceSection() {
           className="max-h-[500px] overflow-y-auto pr-3 space-y-6 custom-scrollbar"
         >
           {experienceItems.map((item, index) => (
-            <ExperienceItem
+            <div
               key={index}
-              {...item}
-              isActive={activeIndex === index}
-              onTouch={() => handleTouch(index)}
-            />
+              ref={(el) => {
+                itemRefs.current[index] = el ?? null;
+              }}
+              data-index={index}
+            >
+              <ExperienceItem
+                {...item}
+                isActive={activeIndex === index}
+                onTouch={() => handleTouch(index)}
+                isVisible={visibleItems[index]}
+              />
+            </div>
           ))}
         </div>
       </div>

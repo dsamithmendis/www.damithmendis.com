@@ -1,23 +1,18 @@
-"use client";
+import HomePage from "@/components/pages/home";
+import type { Metadata } from "next";
 
-import Header from "@/components/shared/header";
-import Footer from "@/components/shared/footer";
-import HeroSection from "@/components/pages/landing/hero-section";
-import ProjectSection from "@/components/pages/landing/project-section";
-import AboutSection from "@/components/pages/landing/about-section";
-import ContactSection from "@/components/pages/landing/contact-section";
-import ExperienceSection from "@/components/pages/landing/experience-section";
+export const metadata: Metadata = {
+  title: 'Portfolio | Damith Mendis',
+  icons: {
+    icon: '/icons/web-icon.png',
+    apple: '/icons/web-icon.png',
+  },
+};
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
-      <Header />
-      <HeroSection />
-      <ProjectSection />
-      <AboutSection />
-      <ExperienceSection />
-      <ContactSection/>
-      <Footer/>
+      <HomePage />
     </>
   );
 }

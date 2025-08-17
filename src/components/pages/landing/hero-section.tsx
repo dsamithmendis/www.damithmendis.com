@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { FlipWords } from "@/components/ui/flip-words";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+import { Button } from "@/components/ui/stateful-button";
 import {
   HeroMainWords,
   HeroFlipWords,
@@ -18,6 +20,8 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 export default function HeroSection() {
   const [showGrid, setShowGrid] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const router = useRouter();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -27,25 +31,26 @@ export default function HeroSection() {
     };
 
     checkMobile();
-
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
     if (isMobile && showGrid) {
-      const timeout = setTimeout(() => {
-        setShowGrid(false);
-      }, 3000);
-
+      const timeout = setTimeout(() => setShowGrid(false), 3000);
       return () => clearTimeout(timeout);
     }
   }, [isMobile, showGrid]);
 
   const handleImageClick = () => {
-    if (isMobile) {
-      setShowGrid((prev) => !prev);
-    }
+    if (isMobile) setShowGrid((prev) => !prev);
+  };
+
+  const handleContactClick = async () => {
+    setIsLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+    router.push("#contact-me");
+    setIsLoading(false);
   };
 
   return (
@@ -61,11 +66,9 @@ export default function HeroSection() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
       <div className="max-w-6xl w-full flex flex-col md:grid md:grid-cols-2 px-4 md:px-0">
-
         <div className="flex flex-col justify-center">
           <h1 className="mt-20 md:mt-0 text-4xl md:text-5xl font-extrabold uppercase">
-            hi, i am
-            <TypewriterEffectSmooth mainwords={HeroMainWords} />
+            hi, i am <TypewriterEffectSmooth mainwords={HeroMainWords} />
           </h1>
 
           <div className="mt-4 text-white max-w-md">
@@ -74,12 +77,12 @@ export default function HeroSection() {
           </div>
 
           <div className="mt-4 flex flex-wrap gap-4">
-            <Link
-              href="#contact-me"
+            <Button
+              onClick={handleContactClick}
               className="bg-[#D3E97A] text-black px-5 py-2 rounded-full font-semibold hover:bg-lime-300 transition"
             >
-              CONTACT ME
-            </Link>
+              {isLoading ? "CONTACTING" : "CONTACT ME"}
+            </Button>
 
             {HeroLinks.map((link, i) =>
               link.href.startsWith("/") ? (
@@ -134,7 +137,6 @@ export default function HeroSection() {
             className="relative group rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden
               w-[90vw] max-w-[520px] h-[90vw] max-h-[520px]"
           >
-
             <div
               onClick={handleImageClick}
               className="relative w-full h-full cursor-pointer select-none"
@@ -151,13 +153,7 @@ export default function HeroSection() {
                 alt="Default Hero"
                 fill
                 className={`rounded-[22px] object-cover transition-opacity duration-500
-                  ${
-                    isMobile
-                      ? showGrid
-                        ? "opacity-0"
-                        : "opacity-100"
-                      : "opacity-100 group-hover:opacity-0"
-                  }
+                  ${isMobile ? (showGrid ? "opacity-0" : "opacity-100") : "opacity-100 group-hover:opacity-0"}
                 `}
               />
             </div>
@@ -167,13 +163,7 @@ export default function HeroSection() {
                 rounded-[22px]
                 transition-opacity duration-500
                 pointer-events-auto
-                ${
-                  isMobile
-                    ? showGrid
-                      ? "opacity-100"
-                      : "opacity-0 pointer-events-none"
-                    : "opacity-0 group-hover:opacity-100 pointer-events-auto"
-                }
+                ${isMobile ? (showGrid ? "opacity-100" : "opacity-0 pointer-events-none") : "opacity-0 group-hover:opacity-100 pointer-events-auto"}
               `}
             >
               {heroImages.map((src, index) => (
