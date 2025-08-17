@@ -1,7 +1,8 @@
 "use client";
+
 import { cn } from "@/components/utils/utils";
 import React from "react";
-import { motion, AnimatePresence, useAnimate } from "motion/react";
+import { motion, useAnimate } from "motion/react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -21,7 +22,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       },
       {
         duration: 0.2,
-      },
+      }
     );
   };
 
@@ -35,7 +36,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       },
       {
         duration: 0.2,
-      },
+      }
     );
     await animate(
       ".check",
@@ -46,7 +47,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       },
       {
         duration: 0.2,
-      },
+      }
     );
 
     await animate(
@@ -59,7 +60,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       {
         delay: 2,
         duration: 0.2,
-      },
+      }
     );
   };
 
@@ -68,14 +69,14 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
     await props.onClick?.(event);
     await animateSuccess();
   };
-
+  
   const {
-    onClick,
-    onDrag,
-    onDragStart,
-    onDragEnd,
-    onAnimationStart,
-    onAnimationEnd,
+    onClick: _,
+    onDrag: _drag,
+    onDragStart: _dragStart,
+    onDragEnd: _dragEnd,
+    onAnimationStart: _animStart,
+    onAnimationEnd: _animEnd,
     ...buttonProps
   } = props;
 
@@ -86,7 +87,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       ref={scope}
       className={cn(
         "flex min-w-[120px] cursor-pointer items-center justify-center gap-2 rounded-full px-4 py-2 font-medium text-white",
-        className,
+        className
       )}
       {...buttonProps}
       onClick={handleClick}
