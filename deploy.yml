@@ -36,9 +36,9 @@ jobs:
       - name: Confirm 'out' directory exists
         run: |
           if [ -d "out" ]; then
-            echo "✅ Out directory exists."
+            echo "Out directory exists."
           else
-            echo "❌ Out directory NOT found."
+            echo "Out directory NOT found."
             exit 1
           fi
 

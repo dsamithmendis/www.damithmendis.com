@@ -6,9 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "npx serve@latest out",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "lint": "next lint"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
@@ -30,7 +28,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.2",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "gh-pages": "^5.0.0"
+    "typescript": "^5"
   }
 }
