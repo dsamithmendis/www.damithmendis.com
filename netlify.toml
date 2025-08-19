@@ -1,3 +1,19 @@
 [build]
-  command = "npm run build && npm run export"
+  command = "npm run build"
   publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Optional headers & redirects
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+
+# SPA routing fallback (optional)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
