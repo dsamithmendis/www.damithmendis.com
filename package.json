@@ -5,10 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "export": "next export",
     "start": "npx serve@latest out",
     "lint": "next lint",
-    "predeploy": "npm run build && npm run export",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d out"
   },
   "dependencies": {
