@@ -5,15 +5,15 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Optional headers & redirects
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
 
-# SPA routing fallback (optional)
+# SPA routing fallback for subpath
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/www.damithmendis.com/*"
+  to = "/www.damithmendis.com/index.html"
   status = 200
