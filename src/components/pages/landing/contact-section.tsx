@@ -13,14 +13,30 @@ export default function ContactSection() {
   const dockItems = contactLinks.socials.map((social) => ({
     title: social.name,
     href: social.href,
-    icon: <i className={`${social.iconClass} text-2xl text-[#D3E97A]`} />,
+    icon: <i className={`${social.iconClass} text-2xl text-[#D3E97A]`}></i>,
   }));
 
   useEffect(() => {
     if (state.succeeded) {
-      toast.success("✅ Message sent successfully!");
+      toast.custom(
+        () => (
+          <div className="bg-[#D3E97A] text-black font-bold px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
+            <i className="ri-checkbox-circle-line text-xl"></i>
+            <span>Message sent successfully!</span>
+          </div>
+        ),
+        { duration: 4000 }
+      );
     } else if (state.errors && Object.keys(state.errors).length > 0) {
-      toast.error("⚠️ Something went wrong. Please try again.");
+      toast.custom(
+        () => (
+          <div className="bg-red-600 text-white font-bold px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
+            <i className="ri-error-warning-line text-xl"></i>
+            <span>Something went wrong!</span>
+          </div>
+        ),
+        { duration: 4000 }
+      );
     }
   }, [state.succeeded, state.errors]);
 
