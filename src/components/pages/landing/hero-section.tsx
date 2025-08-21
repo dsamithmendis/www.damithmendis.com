@@ -20,7 +20,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 export default function HeroSection() {
   const [showGrid, setShowGrid] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {

@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { contactLinks } from "@/components/lib/contact-section";
 import { Button } from "@/components/ui/stateful-button";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ContactSection() {
   const [state, handleSubmit] = useForm("mwpqodgp");
@@ -12,11 +13,37 @@ export default function ContactSection() {
   const dockItems = contactLinks.socials.map((social) => ({
     title: social.name,
     href: social.href,
-    icon: <i className={`${social.iconClass} text-2xl text-[#D3E97A]`} />,
+    icon: <i className={`${social.iconClass} text-2xl text-[#D3E97A]`}></i>,
   }));
+
+  useEffect(() => {
+    if (state.succeeded) {
+      toast.custom(
+        () => (
+          <div className="bg-[#D3E97A] text-black font-bold px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
+            <i className="ri-checkbox-circle-line text-xl"></i>
+            <span>Message sent successfully!</span>
+          </div>
+        ),
+        { duration: 4000 }
+      );
+    } else if (state.errors && Object.keys(state.errors).length > 0) {
+      toast.custom(
+        () => (
+          <div className="bg-red-600 text-white font-bold px-6 py-3 rounded-lg shadow-lg flex items-center gap-2">
+            <i className="ri-error-warning-line text-xl"></i>
+            <span>Something went wrong!</span>
+          </div>
+        ),
+        { duration: 4000 }
+      );
+    }
+  }, [state.succeeded, state.errors]);
 
   return (
     <section className="bg-black text-white py-20 px-4 md:px-0">
+      <Toaster position="top-center" reverseOrder={false} />
+
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="self-start" id="contact-me">
           <h2 className="text-3xl md:text-4xl font-extrabold leading-none uppercase mb-6">
