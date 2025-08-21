@@ -14,8 +14,10 @@
     "clsx": "^2.1.1",
     "motion": "^12.23.12",
     "next": "15.4.2",
+    "nextjs-toploader": "^3.8.16",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-hot-toast": "^2.6.0",
     "remixicon": "^4.6.0",
     "tailwind-merge": "^3.3.1"
   },

@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { contactLinks } from "@/components/lib/contact-section";
 import { Button } from "@/components/ui/stateful-button";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ContactSection() {
   const [state, handleSubmit] = useForm("mwpqodgp");
@@ -15,8 +16,18 @@ export default function ContactSection() {
     icon: <i className={`${social.iconClass} text-2xl text-[#D3E97A]`} />,
   }));
 
+  useEffect(() => {
+    if (state.succeeded) {
+      toast.success("✅ Message sent successfully!");
+    } else if (state.errors && Object.keys(state.errors).length > 0) {
+      toast.error("⚠️ Something went wrong. Please try again.");
+    }
+  }, [state.succeeded, state.errors]);
+
   return (
     <section className="bg-black text-white py-20 px-4 md:px-0">
+      <Toaster position="top-center" reverseOrder={false} />
+
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="self-start" id="contact-me">
           <h2 className="text-3xl md:text-4xl font-extrabold leading-none uppercase mb-6">
