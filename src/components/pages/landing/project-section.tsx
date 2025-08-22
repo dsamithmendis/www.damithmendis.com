@@ -6,11 +6,6 @@ import { projects, movingCardItems } from "@/components/lib/project-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
-const withBasePath = (path: string) =>
-  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
-
 export default function ProjectSection() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalImages, setModalImages] = useState<string[]>([]);
@@ -124,7 +119,7 @@ export default function ProjectSection() {
                   {project.tag}
                 </span>
                 <Image
-                  src={withBasePath(project.image)}
+                  src={project.image}
                   alt={project.title}
                   width={600}
                   height={400}
@@ -165,7 +160,7 @@ export default function ProjectSection() {
                   className="flex items-center gap-2 border border-gray-700 text-[#D3E97A] px-5 py-2 rounded-full hover:bg-white/10 transition cursor-pointer"
                 >
                   <Image
-                    src={withBasePath("/icons/artstation-brands-solid.svg")}
+                    src="/icons/artstation-brands-solid.svg"
                     alt="ArtStation"
                     width={20}
                     height={20}
@@ -208,7 +203,7 @@ export default function ProjectSection() {
                 </button>
 
                 <Image
-                  src={withBasePath(modalImages[currentIndex])}
+                  src={modalImages[currentIndex]}
                   alt={`Gallery image ${currentIndex + 1}`}
                   width={1000}
                   height={600}
@@ -231,7 +226,7 @@ export default function ProjectSection() {
                 {modalImages.map((img, idx) => (
                   <Image
                     key={idx}
-                    src={withBasePath(img)}
+                    src={img}
                     alt={`Thumbnail ${idx + 1}`}
                     width={80}
                     height={60}

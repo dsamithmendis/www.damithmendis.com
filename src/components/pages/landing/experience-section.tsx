@@ -3,11 +3,6 @@
 import { useRef, useState, useEffect } from "react";
 import { experienceItems } from "@/components/lib/experience-section";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
-const withBasePath = (path: string) =>
-  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
-
 interface ExperienceItemProps {
   title: string;
   company?: string;
@@ -49,7 +44,7 @@ function ExperienceItem({
       )}
 
       <a
-        href={withBasePath(link)}
+        href={link}
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm text-[#D3E97A] font-medium border-b border-[#D3E97A] inline-block hover:text-lime-300 transition uppercase mt-3"

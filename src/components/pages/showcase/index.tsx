@@ -7,11 +7,6 @@ import {
   DraggableCardContainer,
 } from "@/components/ui/draggable-card";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
-const withBasePath = (path: string) =>
-  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
-
 export default function Showcase() {
   return (
     <>
@@ -30,7 +25,7 @@ export default function Showcase() {
                     className="relative w-[280px] h-[50px] cursor-grab"
                   >
                     <Image
-                      src={withBasePath(src)}
+                      src={src}
                       alt={`Draggable image ${index + 1}`}
                       width={300}
                       height={300}
@@ -60,7 +55,7 @@ export default function Showcase() {
                           className={image.className || "w-full"}
                         >
                           <Image
-                            src={withBasePath(image.src)}
+                            src={image.src}
                             alt={image.alt}
                             width={image.width}
                             height={image.height}
