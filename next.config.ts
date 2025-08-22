@@ -1,16 +1,13 @@
 import type { NextConfig } from "next";
 
-const repo = "www.damithmendis.com";
-
 const nextConfig: NextConfig = {
-  output: "export",
+  reactStrictMode: true,
+  output: undefined,
   images: {
     unoptimized: true,
   },
-  basePath: `/${repo}`,
-  assetPrefix: `/${repo}`,
   env: {
-    NEXT_PUBLIC_BASE_PATH: `/${repo}`,
+    NEXT_PUBLIC_BASE_PATH: "",
   },
 };
 
