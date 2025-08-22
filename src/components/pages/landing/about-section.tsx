@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getAboutImages } from "@/components/lib/about-section";
+import { aboutImages } from "@/components/lib/about-section";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const aboutImages = getAboutImages(basePath);
+
+const withBasePath = (path: string) =>
+  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
 
 export default function AboutSection() {
   const [current, setCurrent] = useState(0);
@@ -30,7 +32,7 @@ export default function AboutSection() {
                 : "opacity-0 pointer-events-none"
             }`}
             style={{
-              backgroundImage: `url(${src})`,
+              backgroundImage: `url(${withBasePath(src)})`,
               willChange: "opacity",
             }}
           />
@@ -47,6 +49,7 @@ export default function AboutSection() {
       </div>
 
       <div className="absolute inset-0 bg-black/60 z-10" />
+
       <div className="relative z-20 flex items-center justify-center h-full px-4 md:px-0">
         <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 text-white">
           <div className="self-start">
@@ -69,7 +72,7 @@ export default function AboutSection() {
             </p>
 
             <Link
-              href={`${basePath}/showcase`}
+              href={withBasePath("/showcase")}
               className="text-[#D3E97A] font-medium border-b border-[#D3E97A] inline-block hover:text-lime-300 transition"
             >
               SHOWCASE
