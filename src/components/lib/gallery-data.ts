@@ -1,7 +1,3 @@
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const withBasePath = (path: string) =>
-  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
-
 export interface GalleryImage {
   src: string;
   alt: string;
@@ -20,14 +16,14 @@ export const gallerySections: GallerySection[] = [
     images: [
       [
         {
-          src: withBasePath("/images/grid-1/image-1.webp"),
+          src: "/images/grid-1/image-1.webp",
           alt: "Big Image 1",
           width: 800,
           height: 600,
           className: "w-2/3 pr-2",
         },
         {
-          src: withBasePath("/images/grid-1/image-2.webp"),
+          src: "/images/grid-1/image-2.webp",
           alt: "Small Image 1",
           width: 400,
           height: 300,
@@ -36,14 +32,14 @@ export const gallerySections: GallerySection[] = [
       ],
       [
         {
-          src: withBasePath("/images/grid-1/image-4.webp"),
+          src: "/images/grid-1/image-4.webp",
           alt: "Small Image 2",
           width: 400,
           height: 300,
           className: "w-1/3 pr-2",
         },
         {
-          src: withBasePath("/images/grid-1/image-3.webp"),
+          src: "/images/grid-1/image-3.webp",
           alt: "Big Image 2",
           width: 800,
           height: 600,
@@ -52,20 +48,19 @@ export const gallerySections: GallerySection[] = [
       ],
     ],
   },
-
   // Section 2
   {
     images: [
       [
         {
-          src: withBasePath("/images/grid-2/image-1.webp"),
+          src: "/images/grid-2/image-1.webp",
           alt: "Big Image 3",
           width: 800,
           height: 600,
           className: "w-2/3 pr-2",
         },
         {
-          src: withBasePath("/images/grid-2/image-3.webp"),
+          src: "/images/grid-2/image-3.webp",
           alt: "Small Image 3",
           width: 400,
           height: 300,
@@ -74,14 +69,14 @@ export const gallerySections: GallerySection[] = [
       ],
       [
         {
-          src: withBasePath("/images/grid-2/image-4.webp"),
+          src: "/images/grid-2/image-4.webp",
           alt: "Small Image 4",
           width: 400,
           height: 300,
           className: "w-1/3 pr-2",
         },
         {
-          src: withBasePath("/images/grid-2/image-2.webp"),
+          src: "/images/grid-2/image-2.webp",
           alt: "Big Image 4",
           width: 800,
           height: 600,
@@ -90,13 +85,12 @@ export const gallerySections: GallerySection[] = [
       ],
     ],
   },
-
   // Section 3
   {
     images: [
       [
         {
-          src: withBasePath("/images/grid-3/image-1.webp"),
+          src: "/images/grid-3/image-1.webp",
           alt: "Big Image 5",
           width: 800,
           height: 600,
@@ -105,14 +99,14 @@ export const gallerySections: GallerySection[] = [
       ],
       [
         {
-          src: withBasePath("/images/grid-3/image-2.webp"),
+          src: "/images/grid-3/image-2.webp",
           alt: "Small Image 5",
           width: 400,
           height: 300,
           className: "w-1/2",
         },
         {
-          src: withBasePath("/images/grid-3/image-3.webp"),
+          src: "/images/grid-3/image-3.webp",
           alt: "Small Image 6",
           width: 400,
           height: 300,
@@ -121,13 +115,12 @@ export const gallerySections: GallerySection[] = [
       ],
     ],
   },
-
   // Section 4
   {
     images: [
       [
         {
-          src: withBasePath("/images/grid-4/image-1.webp"),
+          src: "/images/grid-4/image-1.webp",
           alt: "Big Image 6",
           width: 800,
           height: 600,
@@ -136,14 +129,14 @@ export const gallerySections: GallerySection[] = [
       ],
       [
         {
-          src: withBasePath("/images/grid-4/image-2.webp"),
+          src: "/images/grid-4/image-2.webp",
           alt: "Small Image 7",
           width: 400,
           height: 300,
           className: "w-1/2",
         },
         {
-          src: withBasePath("/images/grid-4/image-3.webp"),
+          src: "/images/grid-4/image-3.webp",
           alt: "Small Image 8",
           width: 400,
           height: 300,
@@ -152,20 +145,19 @@ export const gallerySections: GallerySection[] = [
       ],
     ],
   },
-
   // Section 5
   {
     images: [
       [
         {
-          src: withBasePath("/images/grid-5/image-1.webp"),
+          src: "/images/grid-5/image-1.webp",
           alt: "Image 1",
           width: 800,
           height: 600,
           className: "w-1/2",
         },
         {
-          src: withBasePath("/images/grid-5/image-2.webp"),
+          src: "/images/grid-5/image-2.webp",
           alt: "Image 2",
           width: 800,
           height: 600,
@@ -174,20 +166,19 @@ export const gallerySections: GallerySection[] = [
       ],
     ],
   },
-
   // Section 6
   {
     images: [
       [
         {
-          src: withBasePath("/images/grid-6/image-1.webp"),
+          src: "/images/grid-6/image-1.webp",
           alt: "Big Image 7",
           width: 800,
           height: 600,
           className: "w-2/3 pr-2",
         },
         {
-          src: withBasePath("/images/grid-6/image-2.webp"),
+          src: "/images/grid-6/image-2.webp",
           alt: "Small Image 9",
           width: 400,
           height: 300,
@@ -196,14 +187,14 @@ export const gallerySections: GallerySection[] = [
       ],
       [
         {
-          src: withBasePath("/images/grid-6/image-4.webp"),
+          src: "/images/grid-6/image-4.webp",
           alt: "Small Image 10",
           width: 400,
           height: 300,
           className: "w-1/3 pr-2",
         },
         {
-          src: withBasePath("/images/grid-6/image-3.webp"),
+          src: "/images/grid-6/image-3.webp",
           alt: "Big Image 8",
           width: 800,
           height: 600,
@@ -212,20 +203,19 @@ export const gallerySections: GallerySection[] = [
       ],
     ],
   },
-
   // Section 7
   {
     images: [
       [
         {
-          src: withBasePath("/images/grid-7/image-1.webp"),
+          src: "/images/grid-7/image-1.webp",
           alt: "Big Image 9",
           width: 800,
           height: 600,
           className: "w-2/3 pr-2",
         },
         {
-          src: withBasePath("/images/grid-7/image-2.webp"),
+          src: "/images/grid-7/image-2.webp",
           alt: "Small Image 11",
           width: 400,
           height: 300,
@@ -234,14 +224,14 @@ export const gallerySections: GallerySection[] = [
       ],
       [
         {
-          src: withBasePath("/images/grid-7/image-4.webp"),
+          src: "/images/grid-7/image-4.webp",
           alt: "Small Image 12",
           width: 400,
           height: 300,
           className: "w-1/3 pr-2",
         },
         {
-          src: withBasePath("/images/grid-7/image-3.webp"),
+          src: "/images/grid-7/image-3.webp",
           alt: "Big Image 10",
           width: 800,
           height: 600,
@@ -250,13 +240,12 @@ export const gallerySections: GallerySection[] = [
       ],
     ],
   },
-
   // Section 8
   {
     images: [
       [
         {
-          src: withBasePath("/images/grid-8/image-1.webp"),
+          src: "/images/grid-8/image-1.webp",
           alt: "Big Image 11",
           width: 800,
           height: 600,
@@ -265,14 +254,14 @@ export const gallerySections: GallerySection[] = [
       ],
       [
         {
-          src: withBasePath("/images/grid-8/image-2.webp"),
+          src: "/images/grid-8/image-2.webp",
           alt: "Small Image 13",
           width: 400,
           height: 300,
           className: "w-1/2",
         },
         {
-          src: withBasePath("/images/grid-8/image-3.webp"),
+          src: "/images/grid-8/image-3.webp",
           alt: "Small Image 14",
           width: 400,
           height: 300,
@@ -281,13 +270,12 @@ export const gallerySections: GallerySection[] = [
       ],
     ],
   },
-
   // Section 9
   {
     images: [
       [
         {
-          src: withBasePath("/images/grid-9/image-2.webp"),
+          src: "/images/grid-9/image-2.webp",
           alt: "Big Image 12",
           width: 800,
           height: 600,
@@ -296,14 +284,14 @@ export const gallerySections: GallerySection[] = [
       ],
       [
         {
-          src: withBasePath("/images/grid-9/image-1.webp"),
+          src: "/images/grid-9/image-1.webp",
           alt: "Small Image 15",
           width: 400,
           height: 300,
           className: "w-1/2 h-[150px] md:h-[200px]",
         },
         {
-          src: withBasePath("/images/grid-9/image-3.webp"),
+          src: "/images/grid-9/image-3.webp",
           alt: "Small Image 16",
           width: 400,
           height: 300,
@@ -312,20 +300,19 @@ export const gallerySections: GallerySection[] = [
       ],
     ],
   },
-
   // Section 10
   {
     images: [
       [
         {
-          src: withBasePath("/images/grid-10/image-1.webp"),
+          src: "/images/grid-10/image-1.webp",
           alt: "Image 3",
           width: 800,
           height: 600,
           className: "w-1/2",
         },
         {
-          src: withBasePath("/images/grid-10/image-2.webp"),
+          src: "/images/grid-10/image-2.webp",
           alt: "Image 4",
           width: 800,
           height: 600,
@@ -344,4 +331,4 @@ export const draggableItems = [
   "/images/cars/image-5.webp",
   "/images/cars/image-6.webp",
   "/images/cars/image-7.webp",
-].map((src) => withBasePath(src));
+];

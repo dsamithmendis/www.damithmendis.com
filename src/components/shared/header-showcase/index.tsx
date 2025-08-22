@@ -3,11 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
-const withBasePath = (path: string) =>
-  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
-
 export default function HeaderShowcase() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
@@ -37,7 +32,7 @@ export default function HeaderShowcase() {
       >
         <div className="max-w-7xl mx-auto flex justify-end items-center px-4 py-4 w-full">
           <div className="hidden sm:flex space-x-6">
-            <Link href={withBasePath("/")} className={linkStyle}>
+            <Link href="/" className={linkStyle}>
               back
             </Link>
           </div>
@@ -65,7 +60,7 @@ export default function HeaderShowcase() {
           </button>
 
           <Link
-            href={withBasePath("/")}
+            href="/"
             className={linkStyle}
             onClick={() => setMobileMenuVisible(false)}
           >
