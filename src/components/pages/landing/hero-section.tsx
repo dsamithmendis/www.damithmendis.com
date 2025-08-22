@@ -15,11 +15,6 @@ import {
   heroImages,
 } from "@/components/lib/hero-section";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
-const withBasePath = (path: string) =>
-  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
-
 export default function HeroSection() {
   const [showGrid, setShowGrid] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -98,7 +93,7 @@ export default function HeroSection() {
                 >
                   {link.imageSrc ? (
                     <Image
-                      src={withBasePath(link.imageSrc)}
+                      src={link.imageSrc}
                       alt={link.label}
                       width={24}
                       height={24}
@@ -122,7 +117,7 @@ export default function HeroSection() {
                 >
                   {link.imageSrc ? (
                     <Image
-                      src={withBasePath(link.imageSrc)}
+                      src={link.imageSrc}
                       alt={link.label}
                       width={24}
                       height={24}
@@ -156,7 +151,7 @@ export default function HeroSection() {
               aria-label="Toggle image grid"
             >
               <Image
-                src={withBasePath(heroImages[0])}
+                src={heroImages[0]}
                 alt="Default Hero"
                 fill
                 className={`rounded-[22px] object-cover transition-opacity duration-500
@@ -191,7 +186,7 @@ export default function HeroSection() {
                   className="relative w-full aspect-square overflow-hidden rounded-[14px]"
                 >
                   <Image
-                    src={withBasePath(src)}
+                    src={src}
                     alt={`Grid ${index + 1}`}
                     fill
                     className="object-cover w-full h-full transition-transform duration-300 hover:scale-105 hover:-translate-y-1"

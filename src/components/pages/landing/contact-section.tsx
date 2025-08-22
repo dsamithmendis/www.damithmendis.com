@@ -7,17 +7,12 @@ import { contactLinks } from "@/components/lib/contact-section";
 import { Button } from "@/components/ui/stateful-button";
 import toast, { Toaster } from "react-hot-toast";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
-const withBasePath = (path: string) =>
-  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
-
 export default function ContactSection() {
   const [state, handleSubmit] = useForm("mwpqodgp");
 
   const dockItems = contactLinks.socials.map((social) => ({
     title: social.name,
-    href: social.href.startsWith("/") ? withBasePath(social.href) : social.href,
+    href: social.href,
     icon: <i className={`${social.iconClass} text-2xl text-[#D3E97A]`}></i>,
   }));
 
@@ -66,7 +61,7 @@ export default function ContactSection() {
           <p className="text-neutral-400 mb-4">
             For more info, here&apos;s my{" "}
             <a
-              href={withBasePath(contactLinks.resume)}
+              href={contactLinks.resume}
               className="text-white underline"
               download
             >
