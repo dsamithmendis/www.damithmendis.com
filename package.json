@@ -1,38 +1,28 @@
 {
-  "name": "www.damithmendis.com",
-  "version": "0.1.0",
+  "name": "nextjs-dual-deploy",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build:ssr": "next build",
-    "build:static": "NEXT_PUBLIC_STATIC_EXPORT=true next build",
-    "build": "npm run build:static",
-    "start": "next start",
+    "build": "next build",
+    "build:static": "cross-env GITHUB_ACTIONS=true next build",
+    "export": "next export",
+    "start": "npx serve@latest out",
     "lint": "next lint"
   },
   "dependencies": {
-    "@formspree/react": "^3.0.0",
-    "@tabler/icons-react": "^3.34.1",
-    "clsx": "^2.1.1",
-    "motion": "^12.23.12",
-    "next": "15.4.2",
-    "nextjs-toploader": "^3.8.16",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-hot-toast": "^2.6.0",
-    "remixicon": "^4.6.0",
-    "tailwind-merge": "^3.3.1"
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@netlify/plugin-nextjs": "^5.12.1",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.4.2",
-    "tailwindcss": "^4",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "tailwindcss": "^3.4",
+    "cross-env": "^7.0.3",
     "typescript": "^5"
   }
 }
