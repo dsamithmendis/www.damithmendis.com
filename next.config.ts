@@ -1,16 +1,17 @@
 import type { NextConfig } from "next";
 
-const repoName = "www.damithmendis.com";
-
-const isGitHub = process.env.GITHUB_ACTIONS === "true";
+const repo = "www.damithmendis.com";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
   output: "export",
-  images: { unoptimized: true },
-
-  basePath: isGitHub ? `/${repoName}` : "",
-  assetPrefix: isGitHub ? `/${repoName}/` : "",
+  images: {
+    unoptimized: true,
+  },
+  basePath: `/${repo}`,
+  assetPrefix: `/${repo}`,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: `/${repo}`,
+  },
 };
 
 export default nextConfig;
