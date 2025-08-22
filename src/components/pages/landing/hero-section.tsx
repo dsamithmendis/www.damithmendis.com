@@ -60,7 +60,7 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
-        src={withBasePath("/videos/background-video.mp4")}
+        src="/videos/background-video.mp4"
         autoPlay
         muted
         loop
