@@ -1,15 +1,19 @@
 import type { NextConfig } from "next";
 
-const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
+const repo = "www.damithmendis.com";
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: isStaticExport ? "export" : undefined,
+  output: isGithubActions ? "export" : undefined,
   images: {
     unoptimized: true,
   },
-  basePath: isStaticExport ? "/www.damithmendis.com" : "",
-  assetPrefix: isStaticExport ? "/www.damithmendis.com" : "",
+  basePath: isGithubActions ? `/${repo}` : "",
+  assetPrefix: isGithubActions ? `/${repo}/` : "",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isGithubActions ? `/${repo}` : "",
+  },
 };
 
 export default nextConfig;
