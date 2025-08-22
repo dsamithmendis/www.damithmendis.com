@@ -1,3 +1,7 @@
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const withBasePath = (path: string) =>
+  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
+
 export interface ProjectData {
   title: string;
   description: string;
@@ -18,12 +22,12 @@ export const projects: ProjectData[] = [
     tag: "Mogo Studios - TV Derana",
     year: "2022",
     role: "Senior 3D Generalist",
-    image: "/images/projects/image-1-1.webp",
+    image: withBasePath("/images/projects/image-1-1.webp"),
     images: [
-      "/images/projects/image-1-1.webp",
-      "/images/projects/image-1-2.webp",
-      "/images/projects/image-1-3.webp",
-      "/images/projects/image-1-4.webp",
+      withBasePath("/images/projects/image-1-1.webp"),
+      withBasePath("/images/projects/image-1-2.webp"),
+      withBasePath("/images/projects/image-1-3.webp"),
+      withBasePath("/images/projects/image-1-4.webp"),
     ],
     youtubeLink: "https://youtu.be/gUGcTvJNB0c",
     artstationLink: "https://www.artstation.com/artwork/aoaP3R",
@@ -35,12 +39,12 @@ export const projects: ProjectData[] = [
     tag: "Falmouth University",
     year: "2022",
     role: "3D Generalist",
-    image: "/images/projects/image-2-1.webp",
+    image: withBasePath("/images/projects/image-2-1.webp"),
     images: [
-      "/images/projects/image-2-1.webp",
-      "/images/projects/image-2-2.webp",
-      "/images/projects/image-2-3.webp",
-      "/images/projects/image-2-4.webp",
+      withBasePath("/images/projects/image-2-1.webp"),
+      withBasePath("/images/projects/image-2-2.webp"),
+      withBasePath("/images/projects/image-2-3.webp"),
+      withBasePath("/images/projects/image-2-4.webp"),
     ],
     youtubeLink: "https://youtu.be/ggbrs9RtISw",
     artstationLink: "https://www.artstation.com/artwork/OGa9Nb",
@@ -52,12 +56,12 @@ export const projects: ProjectData[] = [
     tag: "Free Time",
     year: "2023",
     role: "3D Generalist",
-    image: "/images/projects/image-3-1.webp",
+    image: withBasePath("/images/projects/image-3-1.webp"),
     images: [
-      "/images/projects/image-3-1.webp",
-      "/images/projects/image-3-2.webp",
-      "/images/projects/image-3-3.webp",
-      "/images/projects/image-3-4.webp",
+      withBasePath("/images/projects/image-3-1.webp"),
+      withBasePath("/images/projects/image-3-2.webp"),
+      withBasePath("/images/projects/image-3-3.webp"),
+      withBasePath("/images/projects/image-3-4.webp"),
     ],
     youtubeLink: "https://youtu.be/NWvfUFmco54",
     artstationLink: "https://www.artstation.com/artwork/rJZr1e",
@@ -69,12 +73,12 @@ export const projects: ProjectData[] = [
     tag: "Falmouth University",
     year: "2019",
     role: "3D Generalist",
-    image: "/images/projects/image-4-1.webp",
+    image: withBasePath("/images/projects/image-4-1.webp"),
     images: [
-      "/images/projects/image-4-1.webp",
-      "/images/projects/image-4-2.webp",
-      "/images/projects/image-4-3.webp",
-      "/images/projects/image-4-4.webp",
+      withBasePath("/images/projects/image-4-1.webp"),
+      withBasePath("/images/projects/image-4-2.webp"),
+      withBasePath("/images/projects/image-4-3.webp"),
+      withBasePath("/images/projects/image-4-4.webp"),
     ],
     youtubeLink: "https://youtu.be/jK9TXo1nr_4",
     artstationLink: "https://www.artstation.com/artwork/XBbJJL",

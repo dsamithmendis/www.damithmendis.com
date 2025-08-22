@@ -8,6 +8,9 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+const withBasePath = (path: string) =>
+  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
+
 export default function ProjectSection() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalImages, setModalImages] = useState<string[]>([]);
@@ -54,7 +57,7 @@ export default function ProjectSection() {
 
     return () => observer.disconnect();
   }, []);
-  
+
   useEffect(() => {
     const nextImage = () =>
       setCurrentIndex((prev) => (prev + 1) % modalImages.length);
@@ -121,7 +124,7 @@ export default function ProjectSection() {
                   {project.tag}
                 </span>
                 <Image
-                  src={`${basePath}${project.image}`}
+                  src={withBasePath(project.image)}
                   alt={project.title}
                   width={600}
                   height={400}
@@ -162,7 +165,7 @@ export default function ProjectSection() {
                   className="flex items-center gap-2 border border-gray-700 text-[#D3E97A] px-5 py-2 rounded-full hover:bg-white/10 transition cursor-pointer"
                 >
                   <Image
-                    src={`${basePath}/icons/artstation-brands-solid.svg`}
+                    src={withBasePath("/icons/artstation-brands-solid.svg")}
                     alt="ArtStation"
                     width={20}
                     height={20}
@@ -194,9 +197,8 @@ export default function ProjectSection() {
               <div className="flex items-center justify-center">
                 <button
                   onClick={() =>
-                    setCurrentIndex(
-                      (prev) =>
-                        prev === 0 ? modalImages.length - 1 : prev - 1
+                    setCurrentIndex((prev) =>
+                      prev === 0 ? modalImages.length - 1 : prev - 1
                     )
                   }
                   className="text-white text-4xl px-4 hover:opacity-70 cursor-pointer"
@@ -206,7 +208,7 @@ export default function ProjectSection() {
                 </button>
 
                 <Image
-                  src={`${basePath}${modalImages[currentIndex]}`}
+                  src={withBasePath(modalImages[currentIndex])}
                   alt={`Gallery image ${currentIndex + 1}`}
                   width={1000}
                   height={600}
@@ -229,7 +231,7 @@ export default function ProjectSection() {
                 {modalImages.map((img, idx) => (
                   <Image
                     key={idx}
-                    src={`${basePath}${img}`}
+                    src={withBasePath(img)}
                     alt={`Thumbnail ${idx + 1}`}
                     width={80}
                     height={60}
