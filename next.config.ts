@@ -1,19 +1,13 @@
 import type { NextConfig } from "next";
 
-const isGitHubPages = process.env.NEXT_PUBLIC_GHPAGES === "true";
+const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "export",
+  output: isStaticExport ? "export" : undefined,
+  images: { unoptimized: true },
 
-  images: {
-    unoptimized: true,
-  },
-
-  basePath: isGitHubPages ? "/www.damithmendis.com" : "",
-  assetPrefix: isGitHubPages ? "/www.damithmendis.com" : "",
-
-  trailingSlash: true,
+  basePath: isStaticExport ? "/www.damithmendis.com" : "",
+  assetPrefix: isStaticExport ? "/www.damithmendis.com" : "",
 };
-
 export default nextConfig;
