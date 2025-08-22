@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build:ssr": "next build",
     "build:static": "NEXT_PUBLIC_STATIC_EXPORT=true next build && next export",
+    "build": "npm run build:static",
     "start": "next start",
     "lint": "next lint"
   },
