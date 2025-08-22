@@ -17,6 +17,9 @@ import {
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+const withBasePath = (path: string) =>
+  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
+
 export default function HeroSection() {
   const [showGrid, setShowGrid] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -57,7 +60,7 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
-        src={`${basePath}/videos/background-video.mp4`}
+        src={withBasePath("/videos/background-video.mp4")}
         autoPlay
         muted
         loop
@@ -95,14 +98,16 @@ export default function HeroSection() {
                 >
                   {link.imageSrc ? (
                     <Image
-                      src={`${basePath}${link.imageSrc}`}
+                      src={withBasePath(link.imageSrc)}
                       alt={link.label}
                       width={24}
                       height={24}
                       className="w-5 h-5"
                     />
                   ) : (
-                    <i className={`${link.iconClass} text-2xl text-[#D3E97A]`} />
+                    <i
+                      className={`${link.iconClass} text-2xl text-[#D3E97A]`}
+                    />
                   )}
                 </Link>
               ) : (
@@ -117,14 +122,16 @@ export default function HeroSection() {
                 >
                   {link.imageSrc ? (
                     <Image
-                      src={`${basePath}${link.imageSrc}`}
+                      src={withBasePath(link.imageSrc)}
                       alt={link.label}
                       width={24}
                       height={24}
                       className="w-5 h-5"
                     />
                   ) : (
-                    <i className={`${link.iconClass} text-2xl text-[#D3E97A]`} />
+                    <i
+                      className={`${link.iconClass} text-2xl text-[#D3E97A]`}
+                    />
                   )}
                 </a>
               )
@@ -149,11 +156,17 @@ export default function HeroSection() {
               aria-label="Toggle image grid"
             >
               <Image
-                src={`${basePath}${heroImages[0]}`}
+                src={withBasePath(heroImages[0])}
                 alt="Default Hero"
                 fill
                 className={`rounded-[22px] object-cover transition-opacity duration-500
-                  ${isMobile ? (showGrid ? "opacity-0" : "opacity-100") : "opacity-100 group-hover:opacity-0"}
+                  ${
+                    isMobile
+                      ? showGrid
+                        ? "opacity-0"
+                        : "opacity-100"
+                      : "opacity-100 group-hover:opacity-0"
+                  }
                 `}
               />
             </div>
@@ -163,7 +176,13 @@ export default function HeroSection() {
                 rounded-[22px]
                 transition-opacity duration-500
                 pointer-events-auto
-                ${isMobile ? (showGrid ? "opacity-100" : "opacity-0 pointer-events-none") : "opacity-0 group-hover:opacity-100 pointer-events-auto"}
+                ${
+                  isMobile
+                    ? showGrid
+                      ? "opacity-100"
+                      : "opacity-0 pointer-events-none"
+                    : "opacity-0 group-hover:opacity-100 pointer-events-auto"
+                }
               `}
             >
               {heroImages.map((src, index) => (
@@ -172,7 +191,7 @@ export default function HeroSection() {
                   className="relative w-full aspect-square overflow-hidden rounded-[14px]"
                 >
                   <Image
-                    src={`${basePath}${src}`}
+                    src={withBasePath(src)}
                     alt={`Grid ${index + 1}`}
                     fill
                     className="object-cover w-full h-full transition-transform duration-300 hover:scale-105 hover:-translate-y-1"
