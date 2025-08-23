@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "NEXT_PUBLIC_BASE_PATH=/www.damithmendis.com next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:github": "cross-env NEXT_PUBLIC_PLATFORM=github next build && next export",
+    "build:netlify": "cross-env NEXT_PUBLIC_PLATFORM=netlify next build && next export"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
@@ -28,6 +30,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.4.2",
     "tailwindcss": "^4",
