@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build:ssr": "next build",
-    "build:static": "NEXT_PUBLIC_STATIC_EXPORT=true next build && next export",
-    "build": "npm run build:static",
+    "build": "npm run build:netlify",
+    "build:github": "NEXT_PUBLIC_DEPLOY_TARGET=github NEXT_PUBLIC_BASE_PATH=/www.damithmendis.com npm run build:ssr",
+    "build:netlify": "NEXT_PUBLIC_DEPLOY_TARGET=netlify NEXT_PUBLIC_BASE_PATH= npm run build:ssr",
     "start": "next start",
     "lint": "next lint"
   },
