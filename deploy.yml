@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout the repository
+      # 1. Checkout repository
       - name: Checkout source
         uses: actions/checkout@v4
 
@@ -40,18 +40,18 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /www.damithmendis.com
         run: npm run build:github
 
-      # 5. Verify that 'out' directory exists
+      # 5. Verify 'out' directory exists
       - name: Verify 'out' directory
         run: |
           if [ -d "out" ]; then
-            echo "✅ Out directory exists."
+            echo "Out directory exists."
           else
-            echo "❌ Out directory NOT found."
+            echo "Out directory NOT found."
             exit 1
           fi
 
-      # 6. Upload Pages artifact
-      - name: Upload artifact to GitHub Pages
+      # 6. Upload artifact to GitHub Pages
+      - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
