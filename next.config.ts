@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const repo = "www.damithmendis.com";
-const deployTarget = process.env.NEXT_PUBLIC_DEPLOY_TARGET || "netlify";
-const isGitHub = deployTarget === "github";
+const isGitHub = process.env.NEXT_PUBLIC_DEPLOY_TARGET === "github";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -12,7 +11,8 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   env: {
     NEXT_PUBLIC_BASE_PATH: isGitHub ? `/${repo}` : "",
-    NEXT_PUBLIC_DEPLOY_TARGET: deployTarget,
+    NEXT_PUBLIC_DEPLOY_TARGET:
+      process.env.NEXT_PUBLIC_DEPLOY_TARGET || "github",
   },
 };
 
