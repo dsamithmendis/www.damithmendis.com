@@ -18,8 +18,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout source
-      - name: Checkout repository
+      # 1. Checkout repository
+      - name: Checkout source
         uses: actions/checkout@v4
 
       # 2. Setup Node.js
@@ -33,12 +33,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4. Build Next.js static site
+      # 4. Build Next.js static site for GitHub Pages
       - name: Build static site
         env:
           NEXT_PUBLIC_DEPLOY_TARGET: github
           NEXT_PUBLIC_BASE_PATH: /www.damithmendis.com
-        run: npm run build:static
+        run: npm run build:github
 
       # 5. Verify that the out directory exists
       - name: Verify 'out' directory
