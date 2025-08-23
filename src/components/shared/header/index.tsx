@@ -51,7 +51,7 @@ export default function Header() {
               <Link href={`${basePath}#contact-me`} className={navLinkClasses}>
                 contact
               </Link>
-              <Link href={`${basePath}/showcase`} className={navLinkClasses}>
+              <Link href="/showcase" className={navLinkClasses}>
                 showcase
               </Link>
             </div>
@@ -101,7 +101,7 @@ export default function Header() {
             contact
           </Link>
           <Link
-            href={`${basePath}/showcase`}
+            href="/showcase"
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
