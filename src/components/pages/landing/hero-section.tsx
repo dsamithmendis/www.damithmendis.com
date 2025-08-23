@@ -118,7 +118,7 @@ export default function HeroSection() {
                 >
                   {link.imageSrc ? (
                     <Image
-                      src={link.imageSrc}
+                      src={`${basePath}${link.imageSrc}`}
                       alt={link.label}
                       width={24}
                       height={24}
