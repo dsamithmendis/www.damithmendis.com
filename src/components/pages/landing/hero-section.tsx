@@ -87,7 +87,7 @@ export default function HeroSection() {
               link.href.startsWith("/") ? (
                 <Link
                   key={i}
-                  href={`${basePath}${link.href}`}
+                  href={link.href}
                   aria-label={link.label}
                   title={link.label}
                   className="w-10 h-10 bg-white/10 text-white rounded-full flex items-center justify-center hover:bg-white/20 transition"
