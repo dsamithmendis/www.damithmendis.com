@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
 
-const isGitHub = process.env.NEXT_PUBLIC_PLATFORM === "github";
+const repo = "www.damithmendis.com";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
   output: "export",
-  images: { unoptimized: true },
-  basePath: isGitHub ? "/www.damithmendis.com" : "",
-  assetPrefix: isGitHub ? "/www.damithmendis.com/" : "",
+  images: {
+    unoptimized: true,
+  },
+  basePath: `/${repo}`,
+  assetPrefix: `/${repo}`,
   env: {
-    NEXT_PUBLIC_PLATFORM: process.env.NEXT_PUBLIC_PLATFORM,
+    NEXT_PUBLIC_BASE_PATH: `/${repo}`,
   },
 };
 
