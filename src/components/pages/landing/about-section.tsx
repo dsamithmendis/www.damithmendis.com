@@ -6,6 +6,9 @@ import { aboutImages } from "@/components/lib/about-section";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
+const withBasePath = (path: string) =>
+  `${basePath}${path.startsWith("/") ? "" : "/"}${path}`;
+
 export default function AboutSection() {
   const [current, setCurrent] = useState(0);
 
@@ -29,7 +32,7 @@ export default function AboutSection() {
                 : "opacity-0 pointer-events-none"
             }`}
             style={{
-              backgroundImage: `url(${src})`,
+              backgroundImage: `url(${withBasePath(src)})`,
               willChange: "opacity",
             }}
           />
@@ -69,7 +72,7 @@ export default function AboutSection() {
             </p>
 
             <Link
-              href={`${basePath}/showcase`}
+              href="/showcase"
               className="text-[#D3E97A] font-medium border-b border-[#D3E97A] inline-block hover:text-lime-300 transition"
             >
               SHOWCASE
