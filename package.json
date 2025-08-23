@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build:ssr": "next build",
-    "build": "npm run build:netlify",
-    "build:github": "NEXT_PUBLIC_DEPLOY_TARGET=github NEXT_PUBLIC_BASE_PATH=/www.damithmendis.com npm run build:ssr",
+    "export:github": "next export",
+    "build:github": "NEXT_PUBLIC_DEPLOY_TARGET=github NEXT_PUBLIC_BASE_PATH=/www.damithmendis.com npm run build:ssr && npm run export:github",
     "build:netlify": "NEXT_PUBLIC_DEPLOY_TARGET=netlify NEXT_PUBLIC_BASE_PATH= npm run build:ssr",
+    "build": "npm run build:netlify",
     "start": "next start",
     "lint": "next lint"
   },
