@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4. Build static site for GitHub Pages
+      # 4. Build static site
       - name: Build static site
         env:
           NEXT_PUBLIC_DEPLOY_TARGET: github

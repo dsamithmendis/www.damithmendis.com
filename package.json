@@ -7,8 +7,7 @@
     "build:ssr": "next build",
     "export:github": "next export",
     "build:github": "NEXT_PUBLIC_DEPLOY_TARGET=github NEXT_PUBLIC_BASE_PATH=/www.damithmendis.com npm run build:ssr && npm run export:github",
-    "build:netlify": "NEXT_PUBLIC_DEPLOY_TARGET=netlify NEXT_PUBLIC_BASE_PATH= npm run build:ssr",
-    "build": "npm run build:netlify",
+    "build": "npm run build:github",
     "start": "next start",
     "lint": "next lint"
   },
