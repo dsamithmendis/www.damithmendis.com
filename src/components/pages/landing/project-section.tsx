@@ -6,6 +6,8 @@ import { projects, movingCardItems } from "@/components/lib/project-section";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function ProjectSection() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalImages, setModalImages] = useState<string[]>([]);
@@ -17,7 +19,10 @@ export default function ProjectSection() {
   );
 
   const openGallery = (images: string[], index: number = 0) => {
-    setModalImages(images);
+    const prefixed = images.map((img) =>
+      img.startsWith("http") ? img : `${basePath}${img}`
+    );
+    setModalImages(prefixed);
     setCurrentIndex(index);
     setModalOpen(true);
   };
@@ -119,7 +124,11 @@ export default function ProjectSection() {
                   {project.tag}
                 </span>
                 <Image
-                  src={project.image}
+                  src={
+                    project.image.startsWith("http")
+                      ? project.image
+                      : `${basePath}${project.image}`
+                  }
                   alt={project.title}
                   width={600}
                   height={400}
@@ -160,7 +169,7 @@ export default function ProjectSection() {
                   className="flex items-center gap-2 border border-gray-700 text-[#D3E97A] px-5 py-2 rounded-full hover:bg-white/10 transition cursor-pointer"
                 >
                   <Image
-                    src="/icons/artstation-brands-solid.svg"
+                    src={`${basePath}/icons/artstation-brands-solid.svg`}
                     alt="ArtStation"
                     width={20}
                     height={20}

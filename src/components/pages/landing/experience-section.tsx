@@ -3,6 +3,8 @@
 import { useRef, useState, useEffect } from "react";
 import { experienceItems } from "@/components/lib/experience-section";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 interface ExperienceItemProps {
   title: string;
   company?: string;
@@ -22,6 +24,9 @@ function ExperienceItem({
   onTouch,
   isVisible = false,
 }: ExperienceItemProps) {
+  // prepend basePath if internal link
+  const finalLink = link.startsWith("http") ? link : `${basePath}${link}`;
+
   return (
     <div
       onTouchStart={onTouch}
@@ -44,7 +49,7 @@ function ExperienceItem({
       )}
 
       <a
-        href={link}
+        href={finalLink}
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm text-[#D3E97A] font-medium border-b border-[#D3E97A] inline-block hover:text-lime-300 transition uppercase mt-3"

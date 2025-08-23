@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function Header() {
   const [showHeader, setShowHeader] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -37,16 +39,19 @@ export default function Header() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/80 to-transparent bg-[length:200%_200%] animate-bg-move"></div>
           <div className="relative z-10 flex w-full justify-between items-center">
             <div className="hidden sm:flex space-x-8 mx-auto">
-              <Link href="#about-me" className={navLinkClasses}>
+              <Link href={`${basePath}#about-me`} className={navLinkClasses}>
                 about
               </Link>
-              <Link href="#featured-projects" className={navLinkClasses}>
+              <Link
+                href={`${basePath}#featured-projects`}
+                className={navLinkClasses}
+              >
                 projects
               </Link>
-              <Link href="#contact-me" className={navLinkClasses}>
+              <Link href={`${basePath}#contact-me`} className={navLinkClasses}>
                 contact
               </Link>
-              <Link href="/showcase" className={navLinkClasses}>
+              <Link href={`${basePath}/showcase`} className={navLinkClasses}>
                 showcase
               </Link>
             </div>
@@ -75,28 +80,28 @@ export default function Header() {
           </button>
 
           <Link
-            href="#about-me"
+            href={`${basePath}#about-me`}
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             about
           </Link>
           <Link
-            href="#featured-projects"
+            href={`${basePath}#featured-projects`}
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             projects
           </Link>
           <Link
-            href="#contact-me"
+            href={`${basePath}#contact-me`}
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             contact
           </Link>
           <Link
-            href="/showcase"
+            href={`${basePath}/showcase`}
             className={navLinkClasses}
             onClick={() => setIsMobileMenuOpen(false)}
           >
