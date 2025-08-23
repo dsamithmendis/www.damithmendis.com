@@ -18,25 +18,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # 1. Checkout repo
       - name: Checkout source
         uses: actions/checkout@v4
 
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
 
+      # 3. Install dependencies
       - name: Install dependencies
         run: npm ci
 
+      # 4. Build Next.js static site
       - name: Build static site
         env:
-          NEXT_PUBLIC_STATIC_EXPORT: "true"
-          NEXT_PUBLIC_DEPLOY_TARGET: "github"
-          NEXT_PUBLIC_BASE_PATH: "/www.damithmendis.com"
+          NEXT_PUBLIC_DEPLOY_TARGET: github
+          NEXT_PUBLIC_BASE_PATH: /www.damithmendis.com
         run: npm run build:static
 
+      # 5. Verify out directory exists
       - name: Confirm 'out' directory exists
         run: |
           if [ -d "out" ]; then
@@ -46,6 +50,7 @@ jobs:
             exit 1
           fi
 
+      # 6. Upload Pages artifact
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
