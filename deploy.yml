@@ -18,8 +18,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1. Checkout repo
-      - name: Checkout source
+      # 1. Checkout source
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       # 2. Setup Node.js
@@ -40,8 +40,8 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /www.damithmendis.com
         run: npm run build:static
 
-      # 5. Verify out directory exists
-      - name: Confirm 'out' directory exists
+      # 5. Verify that the out directory exists
+      - name: Verify 'out' directory
         run: |
           if [ -d "out" ]; then
             echo "Out directory exists."
@@ -51,7 +51,7 @@ jobs:
           fi
 
       # 6. Upload Pages artifact
-      - name: Upload GitHub Pages artifact
+      - name: Upload artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
@@ -61,7 +61,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
