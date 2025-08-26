@@ -51,8 +51,11 @@ export default function ContactSection() {
       <Toaster position="top-center" reverseOrder={false} />
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className="self-start" id="contact-me">
-          <h2 className="text-3xl md:text-4xl font-extrabold leading-none uppercase mb-6">
+        <div className="self-start">
+          <h2
+            className="text-3xl md:text-4xl font-extrabold leading-none uppercase mb-6"
+            id="contact-me"
+          >
             LET&apos;S CONNECT
           </h2>
           <p className="text-neutral-400 mb-2">
