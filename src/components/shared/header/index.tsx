@@ -88,6 +88,12 @@ export default function Header() {
                 about
               </Link>
               <Link
+                href="#experience"
+                className={navLinkClasses("#experience", true)}
+              >
+                experience
+              </Link>
+              <Link
                 href="#contact-me"
                 className={navLinkClasses("#contact-me", true)}
               >
@@ -134,6 +140,12 @@ export default function Header() {
           >
             about
           </Link>
+          <Link
+                href="#experience"
+                className={navLinkClasses("#experience", true)}
+              >
+                experience
+              </Link>
           <Link
             href="#contact-me"
             className={navLinkClasses("#contact-me", true)}
