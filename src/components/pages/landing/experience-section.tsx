@@ -24,7 +24,6 @@ function ExperienceItem({
   onTouch,
   isVisible = false,
 }: ExperienceItemProps) {
-  // prepend basePath if internal link
   const finalLink = link.startsWith("http") ? link : `${basePath}${link}`;
 
   return (
@@ -102,7 +101,7 @@ export default function ExperienceSection() {
   return (
     <section className="w-full bg-black py-20 px-4 md:px-0">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-white mb-12">
+        <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-white mb-12" id="experience">
           My Experience
         </h2>
 
