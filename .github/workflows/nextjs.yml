@@ -73,8 +73,14 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      
+      # Build static site
+      - name: Build static site
+        env:
+          NEXT_PUBLIC_DEPLOY_TARGET: github
+          NEXT_PUBLIC_BASE_PATH: /www.damithmendis.com
+        run: npm run build:github
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
