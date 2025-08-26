@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:github": "cross-env NEXT_PUBLIC_PLATFORM=github next build && next export",
-    "build:netlify": "cross-env NEXT_PUBLIC_PLATFORM=netlify next build && next export"
+    "build:github": "node build-github.js",
+    "build:netlify": "node build-netlify.js"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
