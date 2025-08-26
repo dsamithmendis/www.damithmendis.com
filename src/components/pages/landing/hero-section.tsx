@@ -21,6 +21,8 @@ export default function HeroSection() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
   useEffect(() => {
     const checkMobile = () => {
       const mobile = window.innerWidth < 768;
@@ -54,7 +56,7 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
-        src="/videos/background-video.mp4"
+        src={`${basePath}/videos/background-video.mp4`}
         autoPlay
         muted
         loop
@@ -92,7 +94,7 @@ export default function HeroSection() {
                 >
                   {link.imageSrc ? (
                     <Image
-                      src={link.imageSrc}
+                      src={`${basePath}${link.imageSrc}`}
                       alt={link.label}
                       width={24}
                       height={24}
@@ -116,7 +118,7 @@ export default function HeroSection() {
                 >
                   {link.imageSrc ? (
                     <Image
-                      src={link.imageSrc}
+                      src={`${basePath}${link.imageSrc}`}
                       alt={link.label}
                       width={24}
                       height={24}
@@ -150,7 +152,7 @@ export default function HeroSection() {
               aria-label="Toggle image grid"
             >
               <Image
-                src={heroImages[0]}
+                src={`${basePath}${heroImages[0]}`}
                 alt="Default Hero"
                 fill
                 className={`rounded-[22px] object-cover transition-opacity duration-500
@@ -185,7 +187,7 @@ export default function HeroSection() {
                   className="relative w-full aspect-square overflow-hidden rounded-[14px]"
                 >
                   <Image
-                    src={src}
+                    src={`${basePath}${src}`}
                     alt={`Grid ${index + 1}`}
                     fill
                     className="object-cover w-full h-full transition-transform duration-300 hover:scale-105 hover:-translate-y-1"
