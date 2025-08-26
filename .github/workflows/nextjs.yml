@@ -78,7 +78,6 @@ jobs:
       - name: Build static site
         env:
           NEXT_PUBLIC_DEPLOY_TARGET: github
-          NEXT_PUBLIC_BASE_PATH: /www.damithmendis.com
         run: npm run build:github
 
       - name: Upload artifact
