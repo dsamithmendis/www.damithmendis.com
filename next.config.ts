@@ -1,16 +1,16 @@
 import type { NextConfig } from "next";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const assetPrefix = basePath ? `${basePath}/` : "";
+const repo = "www.damithmendis.com";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
   output: "export",
-  images: { unoptimized: true },
-  basePath,
-  assetPrefix,
+  images: {
+    unoptimized: true,
+  },
+  basePath: `/${repo}`,
+  assetPrefix: `/${repo}`,
   env: {
-    NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_BASE_PATH: `/${repo}`,
   },
 };
 
