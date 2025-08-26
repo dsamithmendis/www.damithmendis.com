@@ -2,24 +2,62 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [showHeader, setShowHeader] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setShowHeader(window.scrollY > 0);
     };
-
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinkClasses =
-    "text-[#D3E97A] hover:text-lime-400 text-sm sm:text-base font-semibold uppercase transition cursor-pointer";
+  useEffect(() => {
+    const sections = ["about-me", "featured-projects", "contact-me"];
+    const observers: IntersectionObserver[] = [];
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setActiveSection(id);
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+        observer.observe(el);
+        observers.push(observer);
+      }
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
+
+  const navLinkClasses = (href: string, isSection = false) => {
+    const isActive =
+      isSection && activeSection === href.replace("#", "")
+        ? true
+        : !isSection && pathname === href;
+
+    return `relative text-sm sm:text-base font-semibold uppercase cursor-pointer transition 
+      ${isActive ? "text-lime-400" : "text-[#D3E97A] hover:text-lime-400"}
+      after:absolute after:left-0 after:bottom-[-4px] after:h-[2px] ${
+        isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
+      } after:bg-lime-400 after:transition-all after:duration-300`;
+  };
 
   return (
     <>
@@ -37,16 +75,25 @@ export default function Header() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/80 to-transparent bg-[length:200%_200%] animate-bg-move"></div>
           <div className="relative z-10 flex w-full justify-between items-center">
             <div className="hidden sm:flex space-x-8 mx-auto">
-              <Link href="#about-me" className={navLinkClasses}>
-                about
-              </Link>
-              <Link href="#featured-projects" className={navLinkClasses}>
+              <Link
+                href="#featured-projects"
+                className={navLinkClasses("#featured-projects", true)}
+              >
                 projects
               </Link>
-              <Link href="#contact-me" className={navLinkClasses}>
+              <Link
+                href="#about-me"
+                className={navLinkClasses("#about-me", true)}
+              >
+                about
+              </Link>
+              <Link
+                href="#contact-me"
+                className={navLinkClasses("#contact-me", true)}
+              >
                 contact
               </Link>
-              <Link href="/showcase" className={navLinkClasses}>
+              <Link href="/showcase" className={navLinkClasses("/showcase")}>
                 showcase
               </Link>
             </div>
@@ -73,31 +120,30 @@ export default function Header() {
           >
             <i className="ri-close-line" />
           </button>
-
-          <Link
-            href="#about-me"
-            className={navLinkClasses}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            about
-          </Link>
           <Link
             href="#featured-projects"
-            className={navLinkClasses}
+            className={navLinkClasses("#featured-projects", true)}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             projects
           </Link>
           <Link
+            href="#about-me"
+            className={navLinkClasses("#about-me", true)}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            about
+          </Link>
+          <Link
             href="#contact-me"
-            className={navLinkClasses}
+            className={navLinkClasses("#contact-me", true)}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             contact
           </Link>
           <Link
             href="/showcase"
-            className={navLinkClasses}
+            className={navLinkClasses("/showcase")}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             showcase
