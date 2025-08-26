@@ -20,7 +20,12 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const sections = ["about-me", "featured-projects", "contact-me"];
+    const sections = [
+      "about-me",
+      "featured-projects",
+      "experience",
+      "contact-me",
+    ];
     const observers: IntersectionObserver[] = [];
 
     sections.forEach((id) => {
@@ -141,11 +146,12 @@ export default function Header() {
             about
           </Link>
           <Link
-                href="#experience"
-                className={navLinkClasses("#experience", true)}
-              >
-                experience
-              </Link>
+            href="#experience"
+            className={navLinkClasses("#experience", true)}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            experience
+          </Link>
           <Link
             href="#contact-me"
             className={navLinkClasses("#contact-me", true)}
