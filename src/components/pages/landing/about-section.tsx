@@ -20,7 +20,7 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden" id="about-me">
       <div className="absolute inset-0 z-0">
         {aboutImages.map((src, index) => (
           <div
@@ -53,10 +53,7 @@ export default function AboutSection() {
       <div className="relative z-20 flex items-center justify-center h-full px-4 md:px-0">
         <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 text-white">
           <div className="self-start">
-            <h2
-              id="about-me"
-              className="text-3xl md:text-4xl font-extrabold uppercase"
-            >
+            <h2 className="text-3xl md:text-4xl font-extrabold uppercase">
               about me
             </h2>
           </div>

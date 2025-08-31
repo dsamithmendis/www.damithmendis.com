@@ -56,7 +56,7 @@ export const InfiniteMovingCards = ({
         {[...items, ...items].map((item, idx) => (
           <li
             key={item.name + idx}
-            className="relative w-[350px] md:w-[450px] max-w-full shrink-0 h-[360px] flex flex-col justify-between rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] px-8 py-6 dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]"
+            className="relative w-[350px] md:w-[450px] max-w-full shrink-0 h-[360px] flex flex-col justify-between rounded-2xl border border-b-0 px-8 py-6 border-zinc-700 bg-[linear-gradient(180deg,#27272a,#18181b)]"
           >
             <blockquote>
               <div
@@ -65,7 +65,7 @@ export const InfiniteMovingCards = ({
               ></div>
 
               {"quote" in item ? (
-                <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
+                <span className="relative z-20 text-sm leading-[1.6] font-normal text-gray-100">
                   {item.quote}
                 </span>
               ) : (
@@ -77,10 +77,10 @@ export const InfiniteMovingCards = ({
 
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
+                  <span className="text-sm leading-[1.6] font-normal text-gray-400">
                     {item.name}
                   </span>
-                  <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
+                  <span className="text-sm leading-[1.6] font-normal text-gray-400">
                     {item.title}
                   </span>
                 </span>
