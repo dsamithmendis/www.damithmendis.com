@@ -10,7 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function ContactSection() {
-  const [state, handleSubmit] = useForm("mwpqodgp");
+  const [state, handleSubmit] = useForm("mzzagbgy");
 
   const resumeLink = contactLinks.resume.startsWith("http")
     ? contactLinks.resume
@@ -47,15 +47,12 @@ export default function ContactSection() {
   }, [state.succeeded, state.errors]);
 
   return (
-    <section className="bg-black text-white py-20 px-4 md:px-0">
+    <section className="bg-black text-white py-20 px-4 md:px-0" id="contact-me">
       <Toaster position="top-center" reverseOrder={false} />
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="self-start">
-          <h2
-            className="text-3xl md:text-4xl font-extrabold leading-none uppercase mb-6"
-            id="contact-me"
-          >
+          <h2 className="text-3xl md:text-4xl font-extrabold leading-none uppercase mb-6">
             LET&apos;S CONNECT
           </h2>
           <p className="text-neutral-400 mb-2">
