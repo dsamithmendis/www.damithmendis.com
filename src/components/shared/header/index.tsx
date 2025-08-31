@@ -18,24 +18,26 @@ export default function Header() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  
   useEffect(() => {
-    const sections = [
-      "about-me",
-      "featured-projects",
-      "experience",
-      "contact-me",
-    ];
+    const sectionMap: Record<string, string> = {
+      "start-project": "projects",
+      "end-project": "projects",
+      "about-me": "about-me",
+      "experience": "experience",
+      "contact-me": "contact-me",
+    };
+
     const observers: IntersectionObserver[] = [];
 
-    sections.forEach((id) => {
+    Object.keys(sectionMap).forEach((id) => {
       const el = document.getElementById(id);
       if (el) {
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                setActiveSection(id);
+                setActiveSection(sectionMap[id]);
               }
             });
           },
@@ -46,9 +48,7 @@ export default function Header() {
       }
     });
 
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
+    return () => observers.forEach((observer) => observer.disconnect());
   }, []);
 
   const navLinkClasses = (href: string, isSection = false) => {
@@ -81,15 +81,12 @@ export default function Header() {
           <div className="relative z-10 flex w-full justify-between items-center">
             <div className="hidden sm:flex space-x-8 mx-auto">
               <Link
-                href="#featured-projects"
-                className={navLinkClasses("#featured-projects", true)}
+                href="#start-project"
+                className={navLinkClasses("projects", true)}
               >
                 projects
               </Link>
-              <Link
-                href="#about-me"
-                className={navLinkClasses("#about-me", true)}
-              >
+              <Link href="#about-me" className={navLinkClasses("#about-me", true)}>
                 about
               </Link>
               <Link
@@ -132,8 +129,8 @@ export default function Header() {
             <i className="ri-close-line" />
           </button>
           <Link
-            href="#featured-projects"
-            className={navLinkClasses("#featured-projects", true)}
+            href="#start-project"
+            className={navLinkClasses("projects", true)}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             projects
