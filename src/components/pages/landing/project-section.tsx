@@ -80,12 +80,10 @@ export default function ProjectSection() {
 
   return (
     <section className="w-full bg-black py-20 px-4 md:px-0">
+      <div id="start-project"></div>
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-white">
-          <h2
-            id="featured-projects"
-            className="text-3xl md:text-4xl font-extrabold uppercase"
-          >
+          <h2 className="text-3xl md:text-4xl font-extrabold uppercase">
             featured projects
           </h2>
           <p className="mt-4 text-lg text-neutral-400">
@@ -259,6 +257,7 @@ export default function ProjectSection() {
         speed="normal"
         direction="left"
       />
+      <div id="end-project"></div>
     </section>
   );
 }

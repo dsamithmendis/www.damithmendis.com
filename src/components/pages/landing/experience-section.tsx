@@ -99,9 +99,9 @@ export default function ExperienceSection() {
   }, []);
 
   return (
-    <section className="w-full bg-black py-20 px-4 md:px-0">
+    <section className="w-full bg-black py-20 px-4 md:px-0" id="experience">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-white mb-12" id="experience">
+        <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-white mb-12">
           My Experience
         </h2>
 
