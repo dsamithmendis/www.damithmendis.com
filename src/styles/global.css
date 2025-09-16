@@ -2,61 +2,52 @@
 @import 'remixicon/fonts/remixicon.css';
 
 :root {
+  --animation-duration: 40s;
+  --animation-direction: forwards;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-
-  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
-  --animate-bg-move: bg-move 8s linear infinite;
-
-  @keyframes scroll {
-    to {
-      transform: translate(calc(-50% - 0.5rem));
-    }
-  }
-
-  @keyframes bg-move {
-    0% {
-      background-position: 0% 50%;
-    }
-    100% {
-      background-position: 200% 50%;
-    }
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes bg-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@layer utilities {
+  .animate-scroll {
+    animation: scroll var(--animation-duration) var(--animation-direction) linear infinite;
+  }
+
+  .animate-bg-move {
+    animation: bg-move 8s linear infinite;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
 }
-
 .custom-scrollbar::-webkit-scrollbar-track {
   background: #1a1a1a;
 }
-
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #444;
   border-radius: 6px;
 }
-
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #666;
 }
